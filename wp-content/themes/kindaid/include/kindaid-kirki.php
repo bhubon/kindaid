@@ -22,6 +22,20 @@ function header_info_section() {
 		]
 	);
 
+	new \Kirki\Field\Checkbox_Switch(
+		[
+			'settings' => 'header_right_switch',
+			'label' => esc_html__('Header Right Info Switch', 'kirki'),
+			'description' => esc_html__('Header Right Switch', 'kirki'),
+			'section' => 'header_info_section',
+			'default' => 'off',
+			'choices' => [
+				'on' => esc_html__('Enable', 'kirki'),
+				'off' => esc_html__('Disable', 'kirki'),
+			],
+		]
+	);
+
 	new \Kirki\Field\Text(
 		[
 			'settings' => 'button_text',
@@ -109,5 +123,89 @@ function header_offcanvas_kirki() {
 			'priority' => 10,
 		]
 	);
+
+	new \Kirki\Field\Repeater(
+		[
+			'settings' => 'offcanvas_gallery',
+			'label' => esc_html__('Offcanvas Gallery Item', 'kirki'),
+			'section' => 'header_offcanvas_section',
+			'priority' => 10,
+			'fields' => [
+				'offcanvas_image' => [
+					'type' => 'image',
+					'label' => esc_html__('Offcanvas Image', 'kirki'),
+					'description' => esc_html__('Offcanvas Image', 'kirki'),
+					'default' => '',
+				],
+			],
+		]
+	);
+
+	new \Kirki\Field\Repeater(
+		[
+			'settings' => 'offcanvas_info',
+			'label' => esc_html__('Offcanvas Info Item', 'kirki'),
+			'section' => 'header_offcanvas_section',
+			'priority' => 10,
+			'fields' => [
+				'offcanvas_info_name' => [
+					'type' => 'text',
+					'label' => esc_html__('Offcanvas Info Item', 'kirki'),
+					// 'description' => esc_html__('Offcanvas Info Item Here', 'kirki'),
+					'default' => '',
+				],
+				'offcanvas_info_url' => [
+					'type' => 'text',
+					'label' => esc_html__('Offcanvas Item Url', 'kirki'),
+					// 'description' => esc_html__('Offcanvas Item Url Here', 'kirki'),
+					'default' => '',
+				],
+			],
+		]
+	);
 }
 header_offcanvas_kirki();
+
+//Header Social Section
+function header_social_section() {
+	new \Kirki\Section(
+		'header_social_section',
+		[
+			'title' => esc_html__('Header Social', 'kirki'),
+			'description' => esc_html__('Social Section', 'kirki'),
+			'panel' => 'kindaid_panel',
+			'priority' => 160,
+		]
+	);
+
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'fb_url',
+			'label' => esc_html__('Facebook URL', 'kirki'),
+			'section' => 'header_social_section',
+			'default' => esc_html__('#', 'kirki'),
+			'priority' => 10,
+		]
+	);
+
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'tw_url',
+			'label' => esc_html__('Twitter URL', 'kirki'),
+			'section' => 'header_social_section',
+			'default' => esc_html__('#', 'kirki'),
+			'priority' => 10,
+		]
+	);
+
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'inst_url',
+			'label' => esc_html__('Instagram URL', 'kirki'),
+			'section' => 'header_social_section',
+			'default' => esc_html__('#', 'kirki'),
+			'priority' => 10,
+		]
+	);
+}
+header_social_section();

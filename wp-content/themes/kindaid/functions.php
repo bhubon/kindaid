@@ -14,10 +14,10 @@ if (!function_exists('kindaid_setup')):
         /*
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
-         * If you're building a theme based on twentyfifteen, use a find and replace
-         * to change 'twentyfifteen' to the name of your theme in all the template files
+         * If you're building a theme based on kindaid, use a find and replace
+         * to change 'kindaid' to the name of your theme in all the template files
          */
-        load_theme_textdomain('twentyfifteen', get_template_directory() . '/languages');
+        load_theme_textdomain('kindaid', get_template_directory() . '/languages');
 
         // Add default posts and comments RSS feed links to head.
         add_theme_support('automatic-feed-links');
@@ -40,8 +40,7 @@ if (!function_exists('kindaid_setup')):
 
         // This theme uses wp_nav_menu() in two locations.
         register_nav_menus(array(
-            'primary' => __('Primary Menu', 'twentyfifteen'),
-            'social' => __('Social Links Menu', 'twentyfifteen'),
+            'main-menu' => __('Main Menu', 'kindaid'),
         ));
 
         /*
@@ -61,11 +60,11 @@ if (!function_exists('kindaid_setup')):
             'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
         ));
 
-        // $color_scheme  = twentyfifteen_get_color_scheme();
+        // $color_scheme  = kindaid_get_color_scheme();
         // $default_color = trim( $color_scheme[0], '#' );
 
         // Setup the WordPress core custom background feature.
-        // add_theme_support( 'custom-background', apply_filters( 'twentyfifteen_custom_background_args', array(
+        // add_theme_support( 'custom-background', apply_filters( 'kindaid_custom_background_args', array(
         // 	'default-color'      => $default_color,
         // 	'default-attachment' => 'fixed',
         // ) ) );
@@ -74,7 +73,7 @@ if (!function_exists('kindaid_setup')):
          * This theme styles the visual editor to resemble the theme style,
          * specifically font, colors, icons, and column width.
          */
-        // add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', twentyfifteen_fonts_url() ) );
+        // add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', kindaid_fonts_url() ) );
     }
 endif; // kindaid_setup
 add_action('after_setup_theme', 'kindaid_setup');
@@ -115,6 +114,7 @@ function kindaid_scripts() {
 
 //KindAid Require Files
 include_once get_template_directory() . '/include/theme-helper.php';
+include_once get_template_directory() . '/include/nav-walker.php';
 
 function kindaid_kirki() {
     if (class_exists('Kirki')) {
