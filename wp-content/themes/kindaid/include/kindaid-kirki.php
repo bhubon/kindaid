@@ -22,6 +22,21 @@ function header_info_section() {
 		]
 	);
 
+	new \Kirki\Field\Select(
+	[
+		'settings'    => 'header_global',
+		'label'       => esc_html__( 'Select Your Defailt Header', 'kirki' ),
+		'section'     => 'header_info_section',
+		'default'     => 'header-global-1',
+		'placeholder' => esc_html__( 'Choose an option', 'kirki' ),
+		'choices'     => [
+			'header-global-1' => esc_html__( 'Header 1', 'kirki' ),
+			'header-global-2' => esc_html__( 'Header 2', 'kirki' ),
+			'header-global-3' => esc_html__( 'Header 3', 'kirki' ),
+		],
+	]
+);
+
 	new \Kirki\Field\Checkbox_Switch(
 		[
 			'settings' => 'header_right_switch',
@@ -77,6 +92,16 @@ function header_logo_kirki() {
 			'description' => esc_html__('The saved value will be the URL.', 'kirki'),
 			'section' => 'header_logo_section',
 			'default' => get_template_directory_uri() . '/assets/img/logo/logo.png',
+		]
+	);
+
+	new \Kirki\Field\Image(
+		[
+			'settings' => 'logo-transparent',
+			'label' => esc_html__('Transparent Logo', 'kirki'),
+			'description' => esc_html__('The saved value will be the URL.', 'kirki'),
+			'section' => 'header_logo_section',
+			'default' => get_template_directory_uri() . '/assets/img/logo/logo-yellow.png',
 		]
 	);
 }

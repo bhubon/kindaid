@@ -7,6 +7,7 @@ $header_menu_position = $header_right_switch ? 'text-center' : 'text-end';
 ?>
 
 <?php
+get_template_part('templates/header/header-search');
 get_template_part('templates/header/offcanvas');
 get_template_part('templates/header/minicart');
 ?>

@@ -114,7 +114,10 @@ function kindaid_scripts() {
 
 //KindAid Require Files
 include_once get_template_directory() . '/include/theme-helper.php';
+if(function_exists('tpmeta_field')){
+include_once get_template_directory() . '/include/kindaid-metafields.php';
 include_once get_template_directory() . '/include/nav-walker.php';
+}
 
 function kindaid_kirki() {
     if (class_exists('Kirki')) {
