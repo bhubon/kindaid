@@ -41,6 +41,7 @@ if (!function_exists('kindaid_setup')):
         // This theme uses wp_nav_menu() in two locations.
         register_nav_menus(array(
             'main-menu' => __('Main Menu', 'kindaid'),
+            'footer-menu' => __('Footer Menu', 'kindaid'),
         ));
 
         /*
@@ -60,23 +61,54 @@ if (!function_exists('kindaid_setup')):
             'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
         ));
 
-        // $color_scheme  = kindaid_get_color_scheme();
-        // $default_color = trim( $color_scheme[0], '#' );
-
-        // Setup the WordPress core custom background feature.
-        // add_theme_support( 'custom-background', apply_filters( 'kindaid_custom_background_args', array(
-        // 	'default-color'      => $default_color,
-        // 	'default-attachment' => 'fixed',
-        // ) ) );
-
-        /*
-         * This theme styles the visual editor to resemble the theme style,
-         * specifically font, colors, icons, and column width.
-         */
-        // add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', kindaid_fonts_url() ) );
+        remove_theme_support('widgets-block-editor');
     }
 endif; // kindaid_setup
 add_action('after_setup_theme', 'kindaid_setup');
+
+
+/**
+ * Add a sidebar.
+ */
+function kindaid_widgets() {
+	register_sidebar( array(
+		'name'          => __( 'Footer 1 :  Widgets : 1', 'kindaid' ),
+		'id'            => 'footer-1-widget-1',
+		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 1.', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget mb-40 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".3s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer 1 :  Widgets : 2', 'kindaid' ),
+		'id'            => 'footer-1-widget-2',
+		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 2.', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-75 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".4s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer 1 :  Widgets : 3', 'kindaid' ),
+		'id'            => 'footer-1-widget-3',
+		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 4.', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget tp-footer-col-2 mb-50 wow fadeInUp%2$s" data-wow-duration=".9s" data-wow-delay=".5s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer 1 :  Widgets : 4', 'kindaid' ),
+		'id'            => 'footer-1-widget-4',
+		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 4.', 'textdomain' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget mb-50 bg-position wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".6s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'kindaid_widgets' );
 
 
 add_action('wp_enqueue_scripts', 'kindaid_scripts');
@@ -114,6 +146,8 @@ function kindaid_scripts() {
 
 //KindAid Require Files
 include_once get_template_directory() . '/include/theme-helper.php';
+include_once get_template_directory() . '/include/footer-info.php';
+include_once get_template_directory() . '/include/footer-contact-info.php';
 if(function_exists('tpmeta_field')){
 include_once get_template_directory() . '/include/kindaid-metafields.php';
 include_once get_template_directory() . '/include/nav-walker.php';
@@ -125,3 +159,7 @@ function kindaid_kirki() {
     }
 }
 add_action('init', 'kindaid_kirki');
+
+
+
+

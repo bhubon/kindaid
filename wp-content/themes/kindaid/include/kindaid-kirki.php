@@ -234,3 +234,36 @@ function header_social_section() {
 	);
 }
 header_social_section();
+
+//Footer Copyright Section
+function footer_copyright_kirki() {
+	new \Kirki\Section(
+		'footer_section',
+		[
+			'title' => esc_html__('Footer', 'kirki'),
+			'description' => esc_html__('Here footer settings will place.', 'kirki'),
+			'panel' => 'kindaid_panel',
+			'priority' => 160,
+		]
+	);
+
+	new \Kirki\Field\Image(
+		[
+			'settings' => 'footer_bg_image',
+			'label' => esc_html__('Footer Background Image', 'kirki'),
+			'description' => esc_html__('Footer Background image will be here', 'kirki'),
+			'section' => 'footer_section',
+		]
+	);
+
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'footer_copyright',
+			'label' => esc_html__('Footer Copyright', 'kirki'),
+			'description' => esc_html__('The saved value will be the URL.', 'kirki'),
+			'section' => 'footer_section',
+			'default' => esc_html__('© 2026 Charity. is Proudly Powered by Aqlova', 'kirki'),
+		]
+	);
+}
+footer_copyright_kirki();

@@ -125,7 +125,28 @@
         padding-bottom: 13px;
     }
     &-policy{
-        & a{
+        & li{
+            display: inline-block;
+            list-style: none;
+            padding-left: 20px;
+            margin-left: 20px;
+            position: relative;
+            &::before{
+                    position: absolute;
+                    content: "";
+                    border-radius: 100%;
+                    background: rgba(252, 248, 236, 0.8);
+                    width: 4px;
+                    height: 4px;
+                    top: 11px;
+                    left: -3px;
+                }
+            &:first-child{
+                &::before{
+                    display: none;
+                }
+            }
+            & a{
             font-weight: 500;
             font-size: 16px;
             letter-spacing: -0.01em;
@@ -133,21 +154,7 @@
             &:hover{
                 color: var(--tp-theme-secondary);
             }
-            &.dvdr{
-                position: relative;
-                padding-right: 20px;
-                margin-right: 20px;
-                &::before{
-                    position: absolute;
-                    content: "";
-                    border-radius: 100%;
-                    background: rgba(252, 248, 236, 0.8);
-                    width: 4px;
-                    height: 4px;
-                    top: 8px;
-                    right: 0;
-                }
-            }
+        }
         }
     }
     &-subscribe{
