@@ -247,6 +247,21 @@ function footer_copyright_kirki() {
 		]
 	);
 
+
+	new \Kirki\Field\Select(
+	[
+		'settings'    => 'footer_global',
+		'label'       => esc_html__( 'Select Your Defailt Footer', 'kirki' ),
+		'section'     => 'footer_section',
+		'default'     => 'footer-global-1',
+		'placeholder' => esc_html__( 'Choose an option', 'kirki' ),
+		'choices'     => [
+			'footer-global-1' => esc_html__( 'Footer 1', 'kirki' ),
+			'footer-global-2' => esc_html__( 'Footer 2', 'kirki' ),
+		],
+	]
+	);
+
 	new \Kirki\Field\Image(
 		[
 			'settings' => 'footer_bg_image',

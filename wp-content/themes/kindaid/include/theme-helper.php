@@ -130,9 +130,112 @@ function kindaid_social() {
 <?php
 }
 
+//kindaid footer
+function kindaid_footer() {
+    $footer_from_page = function_exists('tpmeta_field') ? tpmeta_field('footer-from-page') : '';
+    
+    $footer_global = get_theme_mod('footer_global', 'footer-global-1');
+
+    if ($footer_from_page == 'footer-page-1') {
+        get_template_part('templates/footer/footer-1');
+    } elseif ($footer_from_page == 'footer-page-2') {
+        get_template_part('templates/footer/footer-2');
+    } else {
+        if ($footer_global == 'footer-global-2') {
+            get_template_part('templates/footer/footer-2');
+        }else {
+            get_template_part('templates/footer/footer-1');
+        }
+    }
+}
+
 function kindaid_footer_copyright() {
     $footer_copyright = get_theme_mod('footer_copyright', __('© 2026 Charity. is Proudly Powered by Aqlova'));
     ?>
-    <p class="mb-0"><?php echo esc_html($footer_copyright); ?></p>
+    <p class="mb-0"><?php echo kindaid_kses($footer_copyright); ?></p>
     <?php
+}
+
+
+/**
+* Sanitize markup for front-end display.
+*
+*/
+function kindaid_kses( $tag = '' ) {
+	$allowed_html = [
+         'a' => [
+            'class'    => [],
+            'href'    => [],
+            'title'    => [],
+            'target'    => [],
+            'rel'    => [],
+         ],
+         'b' => [],
+         'blockquote'  =>  [
+            'cite' => [],
+         ],
+         'cite'                      => [
+            'title' => [],
+         ],
+         'code'                      => [],
+         'del'                    => [
+            'datetime'   => [],
+            'title'      => [],
+        ],
+         'div'                    => [
+            'class'   => [],
+            'title'   => [],
+            'style'   => [],
+         ],
+         'dl'                     => [],
+         'dt'                     => [],
+         'em'                     => [],
+         'h1'                     => [],
+         'h2'                     => [],
+         'h3'                     => [],
+         'h4'                     => [],
+         'h5'                     => [],
+         'h6'                     => [],
+         'i'                         => [
+            'class' => [],
+         ],
+         'img'                    => [
+            'alt'  => [],
+            'class'   => [],
+            'height' => [],
+            'src'  => [],
+            'width'   => [],
+         ],
+         'li'                     => array(
+            'class' => array(),
+         ),
+         'ol'                     => array(
+            'class' => array(),
+         ),
+         'p'                         => array(
+            'class' => array(),
+         ),
+         'q'                         => array(
+            'cite'    => array(),
+            'title'   => array(),
+         ),
+         'span'                      => array(
+            'class'   => array(),
+            'title'   => array(),
+            'style'   => array(),
+         ),
+         'iframe'                 => array(
+            'width'         => array(),
+            'height'     => array(),
+            'scrolling'     => array(),
+            'frameborder'   => array(),
+            'allow'         => array(),
+            'src'        => array(),
+         ),
+         'strike'                 => array(),
+         'br'                     => array(),
+         'strong'                 => array(),
+	];
+
+	return wp_kses( $tag, $allowed_html );
 }

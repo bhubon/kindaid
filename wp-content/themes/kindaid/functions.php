@@ -71,10 +71,11 @@ add_action('after_setup_theme', 'kindaid_setup');
  * Add a sidebar.
  */
 function kindaid_widgets() {
+    // Footer Style 01
 	register_sidebar( array(
 		'name'          => __( 'Footer 1 :  Widgets : 1', 'kindaid' ),
 		'id'            => 'footer-1-widget-1',
-		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 1.', 'textdomain' ),
+		'description'   => __( 'Widgets in this area will be shown on Footer 1 : Widget : 1.', 'kindaid' ),
 		'before_widget' => '<div id="%1$s" class="tp-footer-widget mb-40 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".3s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="tp-footer-title mb-15">',
@@ -83,7 +84,7 @@ function kindaid_widgets() {
 	register_sidebar( array(
 		'name'          => __( 'Footer 1 :  Widgets : 2', 'kindaid' ),
 		'id'            => 'footer-1-widget-2',
-		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 2.', 'textdomain' ),
+		'description'   => __( 'Widgets in this area will be shown on Footer 1 : Widget : 2.', 'kindaid' ),
 		'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-75 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".4s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="tp-footer-title mb-15">',
@@ -92,7 +93,7 @@ function kindaid_widgets() {
 	register_sidebar( array(
 		'name'          => __( 'Footer 1 :  Widgets : 3', 'kindaid' ),
 		'id'            => 'footer-1-widget-3',
-		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 4.', 'textdomain' ),
+		'description'   => __( 'Widgets in this area will be shown on Footer 1 : Widget : 4.', 'kindaid' ),
 		'before_widget' => '<div id="%1$s" class="tp-footer-widget tp-footer-col-2 mb-50 wow fadeInUp%2$s" data-wow-duration=".9s" data-wow-delay=".5s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="tp-footer-title mb-15">',
@@ -101,8 +102,46 @@ function kindaid_widgets() {
 	register_sidebar( array(
 		'name'          => __( 'Footer 1 :  Widgets : 4', 'kindaid' ),
 		'id'            => 'footer-1-widget-4',
-		'description'   => __( 'Widgets in this area will be shown on Footer1 : Widget : 4.', 'textdomain' ),
+		'description'   => __( 'Widgets in this area will be shown on Footer 1 : Widget : 4.', 'kindaid' ),
 		'before_widget' => '<div id="%1$s" class="tp-footer-widget mb-50 bg-position wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".6s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+
+    // Footer Style 02
+	register_sidebar( array(
+		'name'          => __( 'Footer 2 :  Widgets : 1', 'kindaid' ),
+		'id'            => 'footer-2-widget-1',
+		'description'   => __( 'Widgets in this area will be shown on Footer 2 : Widget : 1.', 'kindaid' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget mb-40 mr-70 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".3s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer 2 :  Widgets : 2', 'kindaid' ),
+		'id'            => 'footer-2-widget-2',
+		'description'   => __( 'Widgets in this area will be shown on Footer 2 : Widget : 2.', 'kindaid' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-30 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".4s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer 2 :  Widgets : 3', 'kindaid' ),
+		'id'            => 'footer-2-widget-3',
+		'description'   => __( 'Widgets in this area will be shown on Footer 2 : Widget : 4.', 'kindaid' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-75 tp-footer-col-2 mb-50 wow fadeInUp%2$s" data-wow-duration=".9s" data-wow-delay=".5s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="tp-footer-title mb-15">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => __( 'Footer 2 :  Widgets : 4', 'kindaid' ),
+		'id'            => 'footer-2-widget-4',
+		'description'   => __( 'Widgets in this area will be shown on Footer 2 : Widget : 4.', 'kindaid' ),
+		'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-75 tp-footer-col-2 mb-50  wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".6s">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h3 class="tp-footer-title mb-15">',
 		'after_title'   => '</h3>',
@@ -148,6 +187,8 @@ function kindaid_scripts() {
 include_once get_template_directory() . '/include/theme-helper.php';
 include_once get_template_directory() . '/include/footer-info.php';
 include_once get_template_directory() . '/include/footer-contact-info.php';
+include_once get_template_directory() . '/include/footer-newsletter.php';
+include_once get_template_directory() . '/include/footer-contact-info-2.php';
 if(function_exists('tpmeta_field')){
 include_once get_template_directory() . '/include/kindaid-metafields.php';
 include_once get_template_directory() . '/include/nav-walker.php';

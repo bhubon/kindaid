@@ -176,6 +176,57 @@
                 }
             }
         }
+        &-author{
+            & .sidebar-widget-author-img {
+                flex: 0 0 auto;
+                margin-bottom: 0;
+                margin-right: 30px;
+                @media #{$xs}{
+                    margin-right: 0;
+                    margin-bottom: 20px;
+                }
+                & img{
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 100px;
+                }
+            }
+            & .sidebar-widget-author {
+                padding: 0;
+                padding-bottom: 0;
+                padding: 30px;
+                border: none;
+                border-radius: 14px;
+                background: var(--tp-common-emerald);
+                @media #{$xs}{
+                    flex-wrap: wrap;
+                }
+            }
+            & .sidebar-widget-author-content span {
+                margin-bottom: 2px;
+                display: inline-block;
+            }
+            & .sidebar-widget-author-name {
+                margin-bottom: 12px;
+                font-size: 20px;
+            }
+            & .sidebar-widget-author-content p {
+                @media #{$xl,$lg,$md,$xs}{
+                    & br{
+                        display: none;
+                    }
+                }
+            }
+            & .sidebar-widget-author-social{
+                & a{
+                    margin-right: 8px;
+                    font-size: 22px;
+                    &:hover{
+                        color: var(--tp-theme-primary);
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -197,5 +248,27 @@
     &:hover{
         color: var(--tp-common-white);
         background-color: var(--tp-theme-primary);
+    }
+}
+.tagcloud{
+    & a{
+        font-weight: 500;
+        font-size: 15px;
+        color: var(--tp-common-black);
+        line-height: 1;
+        padding: 9px 17px;
+        text-align: center;
+        margin-bottom: 6px;
+        background: var(--tp-common-white);
+        display: inline-block;
+        text-transform: capitalize;
+        border-radius: 100px;
+        &:not(:last-child){
+            margin-right: 3px;
+        }
+        &:hover{
+            color: var(--tp-common-white);
+            background-color: var(--tp-theme-primary);
+        }
     }
 }
