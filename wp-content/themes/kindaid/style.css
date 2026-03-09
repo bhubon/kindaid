@@ -11,9 +11,16 @@ Text Domain: kindaid
 Tags: charity, non-profit, responsive, clean, modern
 */
 
-.admin-bar .tp-transparent{
+.admin-bar .tp-transparent {
     margin-top: 32px;
 }
-.admin-bar .tp-transparent.header-sticky{
+
+.admin-bar .tp-transparent.header-sticky {
     top: 32px;
+}
+
+.tp-widget-sidebar.widget_search , .tp-widget-sidebar.widget_kindaid_blog_banner {
+    padding: 0;
+    box-shadow: none;
+    background: none;
 }
