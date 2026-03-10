@@ -107,4 +107,51 @@ function kindaid_metafields($meta_boxes) {
 
 add_filter('tp_meta_boxes', 'kindaid_metafields');
 
+
+
+// kindaid_user_metas
+function kindaid_user_metas() {
+    $meta = array(
+        'id' => 'kindaid_user_meta_sec',
+        'label' => esc_html__('User Social Information', 'kindaid'),
+        'fields' => array(
+            array(
+                'id' => 'kindaid_facebook',
+                'label' => esc_html__('Facebook URL', 'kindaid'),
+                'type' => 'text',
+                'default' => '',
+                'placeholder' => esc_html__('Facebook URL...', 'kindaid'),
+                'show_in_admin_table' => 1
+            ),
+            array(
+                'id' => 'kindaid_linkedin',
+                'label' => esc_html__('Linkedin URL', 'kindaid'),
+                'type' => 'text',
+                'default' => '',
+                'placeholder' => esc_html__('Linkedin URL...', 'kindaid'),
+                'show_in_admin_table' => 1
+            ),
+            array(
+                'id' => 'kindaid_instagram',
+                'label' => esc_html__('Instagram URL', 'kindaid'),
+                'type' => 'text',
+                'default' => '',
+                'placeholder' => esc_html__('Instagram URL...', 'kindaid'),
+                'show_in_admin_table' => 1
+            ),
+            array(
+                'id' => 'kindaid_youtube',
+                'label' => esc_html__('Youtube URL', 'kindaid'),
+                'type' => 'text',
+                'default' => '',
+                'placeholder' => esc_html__('Youtube URL...', 'kindaid'),
+                'show_in_admin_table' => 1
+            ),
+        )
+    );
+
+    return $meta;
+}
+add_filter('tp_user_meta', 'kindaid_user_metas');
+
 ?>

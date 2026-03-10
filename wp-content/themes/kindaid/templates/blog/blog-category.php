@@ -1,7 +1,8 @@
 <?php
 $categories = get_the_category();
+$is_single = is_single() ? 'position-static mb-20' : '';
 ?>
-<div class="tp-postbox-cat">
+<div class="tp-postbox-cat <?php echo esc_attr($is_single); ?>">
     <?php
     if (isset($categories[0])) {
         ?>

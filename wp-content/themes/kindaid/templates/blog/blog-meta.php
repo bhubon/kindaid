@@ -3,8 +3,9 @@ $author_id = get_the_author_meta('ID');
 $avatar_url = get_avatar_url($author_id, ['size' => 96]);
 $author_posts_url = get_author_posts_url($author_id);
 $date_archive_url = get_year_link(get_the_time('Y'));
+$is_single_meta = is_single() ? 'tp-postbox-meta-border pb-30 mb-35' : 'mb-15';
 ?>
-<div class="tp-postbox-meta mb-15">
+<div class="tp-postbox-meta <?php echo esc_attr($is_single_meta); ?> mb-15">
     <span><a href="<?php echo esc_url($author_posts_url); ?>"><img
                 src="<?php echo esc_url($avatar_url); ?>" alt="">By <?php the_author(); ?></a></span>
     <span>
