@@ -382,6 +382,14 @@
             padding: 7px 15px;
             background: var(--tp-common-emerald);
             border-radius: 30px;
+            &::after{
+                content: "\f061";
+                font-family: "Font Awesome 6 Pro";
+                font-weight: 400;
+                transform: translateY(1px) rotate(-45deg);
+                margin-left: 4px;
+                display: inline-block;
+            }
             &:hover{
                 color: var(--tp-common-white);
                 background-color: var(--tp-theme-primary);
@@ -396,5 +404,40 @@
         @media #{$lg,$md,$sm,$xs} {
             margin-left: 0;
         }
+    }
+}
+
+.comment-reply-title{
+    font-size: 36px;
+    letter-spacing: inherit;
+}
+.logged-in-as {
+    & a {
+        color: var(--tp-theme-primary);
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.required{
+    color: var(--tp-theme-primary);
+}
+
+#reply-title{
+
+    & small{
+        color: var(--tp-theme-primary);
+        font-size: 18px;
+        margin-left: 10px;
+    }
+}
+
+.postbox__comment{
+    & .comment-respond{
+        margin-bottom: 50px;
+    }
+    & .children{
+        margin-left: 100px;
     }
 }

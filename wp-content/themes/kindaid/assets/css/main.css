@@ -4340,6 +4340,14 @@ body .ui-tooltip {
   background: var(--tp-common-emerald);
   border-radius: 30px;
 }
+.tp-blog-comments-btn a::after {
+  content: "\f061";
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 400;
+  transform: translateY(1px) rotate(-45deg);
+  margin-left: 4px;
+  display: inline-block;
+}
 .tp-blog-comments-btn a:hover {
   color: var(--tp-common-white);
   background-color: var(--tp-theme-primary);
@@ -4354,6 +4362,35 @@ body .ui-tooltip {
   .tp-blog-comments-children {
     margin-left: 0;
   }
+}
+
+.comment-reply-title {
+  font-size: 36px;
+  letter-spacing: inherit;
+}
+
+.logged-in-as a {
+  color: var(--tp-theme-primary);
+}
+.logged-in-as a:hover {
+  text-decoration: underline;
+}
+
+.required {
+  color: var(--tp-theme-primary);
+}
+
+#reply-title small {
+  color: var(--tp-theme-primary);
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.postbox__comment .comment-respond {
+  margin-bottom: 50px;
+}
+.postbox__comment .children {
+  margin-left: 100px;
 }
 
 /*----------------------------------------*/

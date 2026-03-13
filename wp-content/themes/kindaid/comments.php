@@ -7,7 +7,7 @@ if (comments_open()):
         // Display the comments list
         if (have_comments()):
             ?>
-            <div class="tp-blog-comments mb-75">
+            <div class="tp-blog-comments mt-95 mb-75">
                 <h3 class="tp-blog-comments-title mb-30">
                     <?php
                     $comment_count = get_comments_number();
