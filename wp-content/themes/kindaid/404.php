@@ -1,20 +1,33 @@
-<?php get_header(); ?>
+<?php get_header(); 
+
+$error_text = get_theme_mod('404_error',__('404','kindaid'));
+$error_subtitle = get_theme_mod('404_error_subtitle',__('Oops! Page not found','kindaid'));
+$error_content = get_theme_mod('error_content',__('Whoops, this is embrassing. Looks like the page you are looking for was not found.','kindaid'));
+$error_btn_text = get_theme_mod('error_btn_text',__('back To Home','kindaid'));
+?>
 <div class="tp-error-page-area pt-120 pb-120">
     <div class="container container-1424">
         <div class="row justify-content-center">
             <div class="col-xl-8 col-md-9">
                 <div class="tp-error-box text-center">
-                    <h2 class="tp-error-title" >404</h2>
-                    <h4 class="tp-error-subtitle mb-15">Oops! Oage not found</h4>
+                    <?php if(!empty($error_text)): ?>
+                    <h2 class="tp-error-title" ><?php echo esc_html($error_text); ?></h2>
+                    <?php endif; ?>
+                    <?php if(!empty($error_subtitle)): ?>
+                    <h4 class="tp-error-subtitle mb-15"><?php echo esc_html($error_subtitle); ?></h4>
+                    <?php endif; ?>
+                    <?php if(!empty($error_content)): ?>
                     <div class="row justify-content-center mb-15">
                         <div class="col-lg-7">
-                            <p>Whoops, this is embrassing. Looks like the page you are looking for was not found.</p>
+                            <p><?php echo esc_html($error_content); ?></p>
                         </div>
                     </div>
+                    <?php endif; ?>
+                    <?php if(!empty($error_btn_text)): ?>
                     <div class="tp-postbox-btn">
                         <a class="tp-btn tp-btn-animetion mr-5 mb-10"
                             href="<?php echo home_url('/'); ?>">
-                            <span class="btn-text">Back to home</span>
+                            <span class="btn-text"><?php echo esc_html($error_btn_text); ?></span>
                             <span class="btn-icon">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -26,6 +39,7 @@
                             </span>
                         </a>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -205,6 +205,7 @@ include_once get_template_directory() . '/include/footer-contact-info-2.php';
 include_once get_template_directory() . '/include/blog-author.php';
 include_once get_template_directory() . '/include/blog-recent-post.php';
 include_once get_template_directory() . '/include/blog-banner.php';
+include_once get_template_directory() . '/include/breadcrumb.php';
 
 if (function_exists('tpmeta_field')) {
     include_once get_template_directory() . '/include/kindaid-metafields.php';

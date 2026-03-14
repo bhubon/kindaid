@@ -1,4 +1,9 @@
 <?php
+
+$blog_meta_author_switch = get_theme_mod('blog_meta_author_switch',true);
+$blog_meta_date_switch = get_theme_mod('blog_meta_date_switch',true);
+$blog_meta_comment_switch = get_theme_mod('blog_meta_comment_switch',true);
+
 $author_id = get_the_author_meta('ID');
 $avatar_url = get_avatar_url($author_id, ['size' => 96]);
 $author_posts_url = get_author_posts_url($author_id);
@@ -6,8 +11,11 @@ $date_archive_url = get_year_link(get_the_time('Y'));
 $is_single_meta = is_single() ? 'tp-postbox-meta-border pb-30 mb-35' : 'mb-15';
 ?>
 <div class="tp-postbox-meta <?php echo esc_attr($is_single_meta); ?> mb-15">
+    <?php if($blog_meta_author_switch): ?>
     <span><a href="<?php echo esc_url($author_posts_url); ?>"><img
                 src="<?php echo esc_url($avatar_url); ?>" alt="">By <?php the_author(); ?></a></span>
+    <?php endif; ?>
+    <?php if($blog_meta_date_switch): ?>
     <span>
         <a href="<?php echo esc_url($date_archive_url); ?>">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -20,6 +28,8 @@ $is_single_meta = is_single() ? 'tp-postbox-meta-border pb-30 mb-35' : 'mb-15';
             <?php echo get_the_date(); ?>
         </a>
     </span>
+    <?php endif; ?>
+    <?php if($blog_meta_comment_switch): ?>
     <span>
         <a href="<?php echo get_comments_link(); ?>">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,4 +40,5 @@ $is_single_meta = is_single() ? 'tp-postbox-meta-border pb-30 mb-35' : 'mb-15';
             <?php comments_number(); ?>
         </a>
     </span>
+    <?php endif; ?>
 </div>

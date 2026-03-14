@@ -1,6 +1,10 @@
+<?php
+$blog_btn_text = get_theme_mod('blog_btn_text',__('Read More','kindaid'));
+?>
+<?php if(!empty($blog_btn_text)): ?>
 <div class="tp-postbox-btn mt-35">
     <a class="tp-btn tp-btn-animetion mr-5 mb-10" href="<?php the_permalink(); ?>">
-        <span class="btn-text">Read More</span>
+        <span class="btn-text"><?php echo esc_html($blog_btn_text); ?></span>
         <span class="btn-icon">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 7H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
@@ -11,3 +15,4 @@
         </span>
     </a>
 </div>
+<?php endif; ?>

@@ -9,6 +9,13 @@ function kindaid_metafields($meta_boxes) {
         'priority' => 'core',
         'fields' => array(
             array(
+                'label' => 'Breadcrumb On/Off',
+                'id' => "breadcrumb_page_switch",
+                'type' => 'switch', // specify the type field
+                'placeholder' => '',
+                'default' => 'on', // do not remove default key
+            ),
+            array(
 
                 'label' => esc_html__('Header Layout', 'kindaid'),
                 'id' => "header-from-page",
