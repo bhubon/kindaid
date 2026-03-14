@@ -24,3 +24,7 @@ Tags: charity, non-profit, responsive, clean, modern
     box-shadow: none;
     background: none;
 }
+.tp-error-title {
+    font-size: 170px;
+    line-height: 1;
+}

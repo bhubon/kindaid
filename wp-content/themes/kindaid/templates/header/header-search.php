@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                <div class="tp-search-top d-flex justify-content-between align-items-center">
                   <div class="cm-search-logo">
-                     <a href="index.html"><img data-width="108" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo/logo.png" alt="logo"></a>
+                     <?php kindaid_logo(); ?>
                   </div>
                   <button class="tp-search-close">
                      <i class="fa-light fa-xmark"></i>
@@ -17,9 +17,9 @@
          <div class="row justify-content-center">
             <div class="col-lg-12">
                <div class="tp-search-form">
-                  <form action="#">
+                  <form action="<?php home_url('/'); ?>" method="get">
                      <div class="tp-search-form-input">
-                        <input type="text" placeholder="What are you looking foor?" required>
+                        <input type="text" placeholder="<?php echo esc_attr__('What are you looking foor?','kindaid') ?>" value="<?php echo get_search_query(); ?>" required>
                         <span class="tp-search-focus-border"></span>
                         <button class="tp-search-form-icon" type="submit">
                            <i class="fa-sharp fa-regular fa-magnifying-glass"></i>

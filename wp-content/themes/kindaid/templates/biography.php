@@ -6,7 +6,7 @@
     $kindaid_instagram = get_the_author_meta( 'kindaid_instagram');
     $kindaid_youtube = get_the_author_meta( 'kindaid_youtube');
 ?>
-<div class="tp-postbox-details-author mt-40">
+<div class="tp-postbox-details-author mt-40 mb-95">
     <div class="sidebar-widget-author d-flex align-items-start">
         <div class="sidebar-widget-author-img">
             <?php print get_avatar(get_the_author_meta('user_email'),'100','','',['class'=>'media circle img-cirle']) ?>
