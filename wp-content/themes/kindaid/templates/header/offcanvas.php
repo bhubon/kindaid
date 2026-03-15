@@ -45,7 +45,7 @@ $offcanvas_info = get_theme_mod('offcanvas_info', []);
     if(!empty($offcanvas_info)):
     ?>
     <div class="tp-offcanvas-info mb-50">
-        <h3 class="tp-offcanvas-title"><?php echo esc_html__('Information', 'kindiad'); ?></h3>
+        <h3 class="tp-offcanvas-title"><?php echo esc_html__('Information', 'kindaid'); ?></h3>
         <?php
         foreach ($offcanvas_info as $item):
             ?>

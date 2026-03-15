@@ -3,13 +3,13 @@
 function kindaid_metafields($meta_boxes) {
     $meta_boxes[] = array(
         'metabox_id' => 'kindaid-metafields',
-        'title' => esc_html__('Page Options', 'textdpmain'),
+        'title' => esc_html__('Page Options', 'kindaid'),
         'post_type' => 'page', // page, custom post type name
         'context' => 'normal',
         'priority' => 'core',
         'fields' => array(
             array(
-                'label' => 'Breadcrumb On/Off',
+                'label' => __('Breadcrumb On/Off','kindaid'),
                 'id' => "breadcrumb_page_switch",
                 'type' => 'switch', // specify the type field
                 'placeholder' => '',
@@ -52,14 +52,14 @@ function kindaid_metafields($meta_boxes) {
 
     $meta_boxes[] = array(
         'metabox_id' => 'post_format_gallery_metafields',
-        'title' => esc_html__('Post Gallery', 'donafund'),
+        'title' => esc_html__('Post Gallery', 'kindaid'),
         'post_type' => 'post',
         'context' => 'normal',
         'priority' => 'core',
         'fields' => array(
             array(
 
-                'label' => esc_html__('Post Gallery Images', 'textdomain'),
+                'label' => esc_html__('Post Gallery Images', 'kindaid'),
                 'id' => "kindaid_post_format_gallery",
                 'type' => 'gallery',
                 'default' => '',
@@ -72,16 +72,16 @@ function kindaid_metafields($meta_boxes) {
 
     $meta_boxes[] = array(
         'metabox_id' => 'post_format_video_metafields',
-        'title' => esc_html__('Post Video URL', 'donafund'),
+        'title' => esc_html__('Post Video URL', 'kindaid'),
         'post_type' => 'post',
         'context' => 'normal',
         'priority' => 'core',
         'fields' => array(
             array(
-                'label' => esc_html__('Video Format', 'donafund'),
+                'label' => esc_html__('Video Format', 'kindaid'),
                 'id' => "kindaid_post_format_video",
                 'type' => 'text',
-                'placeholder' => esc_html__('Video url here', 'donafund'),
+                'placeholder' => esc_html__('Video url here', 'kindaid'),
                 'default' => '',
                 'conditional' => array()
             ),
@@ -92,16 +92,16 @@ function kindaid_metafields($meta_boxes) {
 
     $meta_boxes[] = array(
         'metabox_id' => 'post_format_audio_metafields',
-        'title' => esc_html__('Post Audio URL', 'donafund'),
+        'title' => esc_html__('Post Audio URL', 'kindaid'),
         'post_type' => 'post',
         'context' => 'normal',
         'priority' => 'core',
         'fields' => array(
             array(
-                'label' => esc_html__('Audio Format', 'donafund'),
+                'label' => esc_html__('Audio Format', 'kindaid'),
                 'id' => "kindaid_post_format_audio",
                 'type' => 'text',
-                'placeholder' => esc_html__('Audio url here', 'donafund'),
+                'placeholder' => esc_html__('Audio url here', 'kindaid'),
                 'default' => '',
                 'conditional' => array()
             ),

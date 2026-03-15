@@ -26,7 +26,7 @@ $error_btn_text = get_theme_mod('error_btn_text',__('back To Home','kindaid'));
                     <?php if(!empty($error_btn_text)): ?>
                     <div class="tp-postbox-btn">
                         <a class="tp-btn tp-btn-animetion mr-5 mb-10"
-                            href="<?php echo home_url('/'); ?>">
+                            href="<?php echo esc_url(home_url('/')); ?>">
                             <span class="btn-text"><?php echo esc_html($error_btn_text); ?></span>
                             <span class="btn-icon">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"

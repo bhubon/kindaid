@@ -8,7 +8,10 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kindaid
-Tags: charity, non-profit, responsive, clean, modern
+Requires at least: 6.0
+Tested up to: 6.9
+Requires PHP: 7.4
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
 .admin-bar .tp-transparent {
@@ -19,12 +22,87 @@ Tags: charity, non-profit, responsive, clean, modern
     top: 32px;
 }
 
-.tp-widget-sidebar.widget_search , .tp-widget-sidebar.widget_kindaid_blog_banner {
+.tp-widget-sidebar.widget_search, .tp-widget-sidebar.widget_kindaid_blog_banner {
     padding: 0;
     box-shadow: none;
     background: none;
 }
+
 .tp-error-title {
     font-size: 170px;
     line-height: 1;
+}
+
+/* unit css  */
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.bypostauthor {
+	display: block;
+}
+.gallery-caption {
+	display: block;
+	margin-top: 10px;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em !important;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em !important;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	text-align: center;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
 }

@@ -27,7 +27,7 @@ function kindaid_header() {
 function kindaid_logo() {
     $kindaid_logo_url = get_theme_mod('logo', get_template_directory_uri() . '/assets/img/logo/logo.png');
     ?>
-    <a href="<?php echo home_url('/'); ?>"><img data-width="108" src="<?php echo esc_url($kindaid_logo_url); ?>"
+    <a href="<?php echo esc_url(home_url('/')); ?>"><img data-width="108" src="<?php echo esc_url($kindaid_logo_url); ?>"
             alt="<?php echo bloginfo(); ?>"></a>
     <?php
 }
@@ -36,7 +36,7 @@ function kindaid_transparet_logo() {
     $kindaid_logo_url_transparent = get_theme_mod('logo-transparent', get_template_directory_uri() . '/assets/img/logo/logo-yellow.png');
     ?>
 
-    <a href="<?php echo home_url('/'); ?>">
+    <a href="<?php echo esc_url(home_url('/')); ?>">
         <img class="logo-1" data-width="108" src="<?php echo esc_url($kindaid_logo_url_transparent); ?>"
             alt="<?php echo bloginfo(); ?>">
         <img class="logo-2 d-none" data-width="108" src="<?php echo esc_url($kindaid_logo_url); ?>"
@@ -47,7 +47,7 @@ function kindaid_transparet_logo() {
 function kindaid_offcanvas_logo() {
     $kindaid_offcanvas_logo_url = get_theme_mod('offcanvas_logo', get_template_directory_uri() . '/assets/img/logo/logo.png');
     ?>
-    <a href="<?php echo home_url('/'); ?>"><img data-width="108" src="<?php echo esc_url($kindaid_offcanvas_logo_url); ?>"
+    <a href="<?php echo esc_url(home_url('/')); ?>"><img data-width="108" src="<?php echo esc_url($kindaid_offcanvas_logo_url); ?>"
             alt="<?php echo bloginfo(); ?>"></a>
     <?php
 }
@@ -150,7 +150,7 @@ function kindaid_footer() {
 }
 
 function kindaid_footer_copyright() {
-    $footer_copyright = get_theme_mod('footer_copyright', __('© 2026 Charity. is Proudly Powered by Aqlova'));
+    $footer_copyright = get_theme_mod('footer_copyright', __('© 2026 Charity. is Proudly Powered by Aqlova','kindaid'));
     ?>
     <p class="mb-0"><?php echo kindaid_kses($footer_copyright); ?></p>
     <?php
@@ -266,7 +266,7 @@ function kindaid_blog_share() {
     <div class="tp-blog-social text-xl-end mn-20">
 
         <!-- Facebook -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_url; ?>" target="_blank">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo esc_url($post_url); ?>" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M1.62839 7.77713C0.911363 7.77713 0.761719 7.91782 0.761719 8.59194V9.81416C0.761719 10.4883 0.911363 10.629 1.62839 10.629H3.36172V15.5179C3.36172 16.192 3.51136 16.3327 4.22839 16.3327H5.96172C6.67874 16.3327 6.82839 16.192 6.82839 15.5179V10.629H8.77466C9.31846 10.629 9.45859 10.5296 9.60798 10.038L9.97941 8.81579C10.2353 7.97368 10.0776 7.77713 9.14609 7.77713H6.82839V5.74009C6.82839 5.29008 7.21641 4.92527 7.69505 4.92527H10.1617C10.8787 4.92527 11.0284 4.78458 11.0284 4.11046V2.48083C11.0284 1.80671 10.8787 1.66602 10.1617 1.66602H7.69505C5.30182 1.66602 3.36172 3.49004 3.36172 5.74009V7.77713H1.62839Z"
@@ -275,7 +275,7 @@ function kindaid_blog_share() {
         </a>
 
         <!-- X (Twitter) -->
-        <a href="https://twitter.com/intent/tweet?url=<?php echo $post_url; ?>&text=<?php echo $post_title; ?>"
+        <a href="https://twitter.com/intent/tweet?url=<?php echo esc_url($post_url); ?>&text=<?php echo esc_attr($post_title); ?>"
             target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -285,7 +285,7 @@ function kindaid_blog_share() {
         </a>
 
         <!-- WhatsApp (best for blogs) -->
-        <a href="https://wa.me/?text=<?php echo $post_title . '%20' . $post_url; ?>" target="_blank">
+        <a href="https://wa.me/?text=<?php echo esc_attr($post_title) . '%20' . esc_url($post_url); ?>" target="_blank">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M1.66602 8.99935C1.66602 5.54238 1.66602 3.8139 2.73996 2.73996C3.8139 1.66602 5.54238 1.66602 8.99935 1.66602C12.4563 1.66602 14.1848 1.66602 15.2587 2.73996C16.3327 3.8139 16.3327 5.54238 16.3327 8.99935C16.3327 12.4563 16.3327 14.1848 15.2587 15.2587C14.1848 16.3327 12.4563 16.3327 8.99935 16.3327C5.54238 16.3327 3.8139 16.3327 2.73996 15.2587C1.66602 14.1848 1.66602 12.4563 1.66602 8.99935Z"

@@ -9,7 +9,7 @@ $post_center = is_active_sidebar('blog-sidebar') ? '' : 'justify-content-center'
             if (have_posts()):
                 while (have_posts()):
                     the_post();
-                    the_content();
+                    echo get_template_part('templates/content','page');
                 endwhile;
             else:
                 ?>

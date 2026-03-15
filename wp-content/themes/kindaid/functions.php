@@ -61,6 +61,10 @@ if (!function_exists('kindaid_setup')):
             'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
         ));
 
+        add_theme_support( "wp-block-styles" );
+        add_theme_support( "responsive-embeds" );
+        add_theme_support( "align-wide" );
+
         remove_theme_support('widgets-block-editor');
     }
 endif; // kindaid_setup
@@ -165,14 +169,15 @@ add_action('widgets_init', 'kindaid_widgets');
 
 add_action('wp_enqueue_scripts', 'kindaid_scripts');
 function kindaid_scripts() {
+    wp_enqueue_style('kindaid-fonts',kindaid_fonts_url(), array(), '1.0.0', 'all');
+    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '5.0.0','all');
+    wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', array(), '1.0.0','all');
+    wp_enqueue_style('swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.css', array(), '1.0.0','all');
+    wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(), '1.0.0','all');
+    wp_enqueue_style('font-awesome-pro', get_template_directory_uri() . '/assets/css/font-awesome-pro.css', array(), '1.0.0','all');
+    wp_enqueue_style('spacing', get_template_directory_uri() . '/assets/css/spacing.css', array(), '1.0.0','all');
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css', array('bootstrap', 'spacing'), '1.0.0','all');
     wp_enqueue_style('kindaid-style', get_stylesheet_uri());
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '5.0.0');
-    wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', array(), '1.0.0');
-    wp_enqueue_style('swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.css', array(), '1.0.0');
-    wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(), '1.0.0');
-    wp_enqueue_style('font-awesome-pro', get_template_directory_uri() . '/assets/css/font-awesome-pro.css', array(), '1.0.0');
-    wp_enqueue_style('spacing', get_template_directory_uri() . '/assets/css/spacing.css', array(), '1.0.0');
-    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css', array('bootstrap', 'spacing'), '1.0.0');
 
     // 2. Bootstrap (Depends on jQuery)
     wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap-min.js', array('jquery'), '5.0.0', true);
@@ -195,21 +200,36 @@ function kindaid_scripts() {
     }
 }
 
+/*
+Register Fonts
+ */
+function kindaid_fonts_url() {
+    $font_url = '';
+
+    /*
+    Translators: If there are characters in your language that are not supported
+    by chosen font(s), translate this to 'off'. Do not translate into your own language.
+     */
+    if ( 'off' !== _x( 'on', 'Google font: on or off', 'kindaid' ) ) {
+        $font_url = 'https://fonts.googleapis.com/css2?'. urlencode('family=Libre+Baskerville:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    }
+    return $font_url;
+}
 
 //KindAid Require Files
 include_once get_template_directory() . '/include/theme-helper.php';
-include_once get_template_directory() . '/include/footer-info.php';
-include_once get_template_directory() . '/include/footer-contact-info.php';
-include_once get_template_directory() . '/include/footer-newsletter.php';
-include_once get_template_directory() . '/include/footer-contact-info-2.php';
-include_once get_template_directory() . '/include/blog-author.php';
-include_once get_template_directory() . '/include/blog-recent-post.php';
-include_once get_template_directory() . '/include/blog-banner.php';
+// include_once get_template_directory() . '/include/footer-info.php';
+// include_once get_template_directory() . '/include/footer-contact-info.php';
+// include_once get_template_directory() . '/include/footer-newsletter.php';
+// include_once get_template_directory() . '/include/footer-contact-info-2.php';
+// include_once get_template_directory() . '/include/blog-author.php';
+// include_once get_template_directory() . '/include/blog-recent-post.php';
+// include_once get_template_directory() . '/include/blog-banner.php';
+include_once get_template_directory() . '/include/nav-walker.php';
 include_once get_template_directory() . '/include/breadcrumb.php';
 
 if (function_exists('tpmeta_field')) {
     include_once get_template_directory() . '/include/kindaid-metafields.php';
-    include_once get_template_directory() . '/include/nav-walker.php';
 }
 
 function kindaid_kirki() {
@@ -228,7 +248,7 @@ add_action('init', 'kindaid_kirki');
  */
 function kindaid_sidebar_search($form) {
     $form = '<div class="tp-widget-search mb-20">
-        <form role="search" method="get" action="' . home_url('/') . '" >
+        <form method="get" action="' . home_url('/') . '" >
             <input type="text" name="s" id="s" placeholder="' . esc_attr('Search...') . '" value="' . get_search_query() . '"  />
             <button type="submit">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
