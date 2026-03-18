@@ -177,6 +177,7 @@ function kindaid_scripts() {
     wp_enqueue_style('font-awesome-pro', get_template_directory_uri() . '/assets/css/font-awesome-pro.css', array(), '1.0.0','all');
     wp_enqueue_style('spacing', get_template_directory_uri() . '/assets/css/spacing.css', array(), '1.0.0','all');
     wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css', array('bootstrap', 'spacing'), '1.0.0','all');
+    wp_enqueue_style('unit-test-style', get_template_directory_uri() . '/assets/css/unit-test.css', array(), '1.0.0','all');
     wp_enqueue_style('kindaid-style', get_stylesheet_uri());
 
     // 2. Bootstrap (Depends on jQuery)

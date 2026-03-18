@@ -29,7 +29,7 @@ $post_center = is_active_sidebar('blog-sidebar') ? '' : 'justify-content-center'
                     ?>
 
                     <?php if ($prev_post || $next_post): ?>
-                        <div class="tp-blog-navigation-wrap mb-35 mt-70">
+                        <div class="tp-blog-navigation-wrap mb-35 mt-90">
                             <div class="row justify-content-between">
                                 <div class="col-xl-5 col-lg-6 col-md-6">
                                     <?php if ($next_post): ?>
@@ -49,7 +49,7 @@ $post_center = is_active_sidebar('blog-sidebar') ? '' : 'justify-content-center'
                                 <div class="col-xl-5 col-lg-6 col-md-6">
                                     <?php if ($next_post): ?>
                                         <div class="tp-blog-navigation mb-30 text-end">
-                                            <a href="<?php echo get_permalink($next_post->ID); ?>">
+                                            <a class="justify-content-end" href="<?php echo get_permalink($next_post->ID); ?>">
                                                 <div class="tp-blog-navigation-text">
                                                     <span>Next Post</span>
                                                     <h4 class="tp-blog-navigation-title">

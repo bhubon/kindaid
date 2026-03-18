@@ -14,17 +14,19 @@
                 <?php the_content(); ?>
             </div>
 
-            <?php if(has_tag()): ?>
-            <div class="tp-blog-tag-social">
-                <div class="row">
-                    <div class="col-xl-8">
-                        <?php kindaid_post_tags(); ?>
-                    </div>
-                    <div class="col-xl-4">
-                        <?php kindaid_blog_share(); ?>
+            <?php if (has_tag()): ?>
+                <div class="tp-tag-social">
+                    <div class="tp-blog-tag-social">
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <?php kindaid_post_tags(); ?>
+                            </div>
+                            <div class="col-xl-4">
+                                <?php kindaid_blog_share(); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php endif; ?>
 
         </div>

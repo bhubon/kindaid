@@ -180,27 +180,27 @@ h6 {
 }
 
 h1 {
-  font-size: 90px;
+  font-size: 60px;
 }
 
 h2 {
-  font-size: 54px;
+  font-size: 48px;
 }
 
 h3 {
-  font-size: 40px;
+  font-size: 38px;
 }
 
 h4 {
-  font-size: 26px;
+  font-size: 30px;
 }
 
 h5 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 h6 {
-  font-size: 16px;
+  font-size: 19px;
 }
 
 ul {
@@ -219,6 +219,7 @@ p {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 a:not([href]):not([class]),
@@ -3772,6 +3773,7 @@ body .ui-tooltip {
 .tp-postbox-title {
   font-size: 40px;
   font-weight: 700;
+  word-break: break-word;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 574.98px) {
   .tp-postbox-title {
@@ -4084,6 +4086,7 @@ body .ui-tooltip {
   font-weight: 600;
   letter-spacing: -0.03em;
   transition: all 0.4s ease;
+  word-break: break-word;
 }
 .tp-blog-tag a {
   background: var(--tp-common-emerald);
@@ -4106,6 +4109,7 @@ body .ui-tooltip {
   padding: 32px 0;
   padding-bottom: 32px;
   padding-bottom: 10px;
+  clear: both;
 }
 .tp-blog-tag-title {
   font-size: 20px;
@@ -4292,9 +4296,6 @@ body .ui-tooltip {
   color: var(--tp-common-white);
 }
 
-.tp-blog-comments-main ul {
-  list-style: none;
-}
 .tp-blog-comments-title {
   font-size: 36px;
   letter-spacing: inherit;
@@ -4310,6 +4311,9 @@ body .ui-tooltip {
   width: 70px;
   height: 70px;
   border-radius: 50px;
+}
+.tp-blog-comments-content {
+  width: 100%;
 }
 .tp-blog-comments-content p {
   font-size: 16px;

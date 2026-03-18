@@ -98,6 +98,7 @@
             font-weight: 600;
             letter-spacing: -0.03em;
             transition: all .4s ease;
+            word-break: break-word;
         }
     }
     &-tag{
@@ -122,6 +123,7 @@
             padding: 32px 0;
             padding-bottom: 32px;
             padding-bottom: 10px;
+            clear: both;
        }  
        &-title {
             font-size: 20px;
@@ -333,7 +335,6 @@
 .tp-blog-comments{
     &-main{
         & ul{
-            list-style: none;
         }
     }
     &-title {
@@ -353,6 +354,7 @@
         }
     }
     &-content{
+        width: 100%;
         & p{
             font-size: 16px;
             line-height: 26px;
