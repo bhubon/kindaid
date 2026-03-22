@@ -1114,7 +1114,6 @@ input[type=color] {
   clear: both;
   cursor: pointer;
   display: block;
-  float: left;
   font-family: inherit;
   font-size: 14px;
   font-weight: normal;
@@ -1172,6 +1171,7 @@ input[type=color] {
   -webkit-transform: scale(1) translateY(0);
   -ms-transform: scale(1) translateY(0);
   transform: scale(1) translateY(0);
+  padding: 10px 0;
 }
 .nice-select.disabled {
   border-color: #ededed;
@@ -1234,15 +1234,17 @@ input[type=color] {
 .nice-select .option {
   cursor: pointer;
   font-weight: 400;
-  line-height: 40px;
+  line-height: 25px;
   list-style: none;
-  min-height: 40px;
+  min-height: 30px;
   outline: none;
   padding-left: 18px;
   padding-right: 29px;
   text-align: left;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+  margin-bottom: 0 !important;
+  white-space: break-spaces;
 }
 .nice-select .option.selected {
   font-weight: bold;
@@ -4142,22 +4144,11 @@ body .ui-tooltip {
   padding-left: 17px;
 }
 .tp-widget-sidebar ul li {
-  display: flex;
   justify-content: space-between;
   color: var(--tp-common-mulberry);
   font-weight: 500;
   font-size: 16px;
   position: relative;
-}
-.tp-widget-sidebar ul li:before {
-  position: absolute;
-  content: "";
-  background-color: var(--tp-common-mulberry);
-  height: 5px;
-  width: 5px;
-  border-radius: 10px;
-  top: 11px;
-  left: -13px;
 }
 .tp-widget-sidebar ul li:not(:last-child) {
   margin-bottom: 10px;

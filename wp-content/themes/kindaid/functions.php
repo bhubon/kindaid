@@ -61,9 +61,9 @@ if (!function_exists('kindaid_setup')):
             'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
         ));
 
-        add_theme_support( "wp-block-styles" );
-        add_theme_support( "responsive-embeds" );
-        add_theme_support( "align-wide" );
+        add_theme_support("wp-block-styles");
+        add_theme_support("responsive-embeds");
+        add_theme_support("align-wide");
 
         remove_theme_support('widgets-block-editor');
     }
@@ -102,7 +102,7 @@ function kindaid_widgets() {
         'name' => __('Footer 1 :  Widgets : 2', 'kindaid'),
         'id' => 'footer-1-widget-2',
         'description' => __('Widgets in this area will be shown on Footer 1 : Widget : 2.', 'kindaid'),
-        'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-75 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".4s">',
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-65 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".4s">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="tp-footer-title mb-15">',
         'after_title' => '</h3>',
@@ -169,15 +169,15 @@ add_action('widgets_init', 'kindaid_widgets');
 
 add_action('wp_enqueue_scripts', 'kindaid_scripts');
 function kindaid_scripts() {
-    wp_enqueue_style('kindaid-fonts',kindaid_fonts_url(), array(), '1.0.0', 'all');
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '5.0.0','all');
-    wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', array(), '1.0.0','all');
-    wp_enqueue_style('swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.css', array(), '1.0.0','all');
-    wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(), '1.0.0','all');
-    wp_enqueue_style('font-awesome-pro', get_template_directory_uri() . '/assets/css/font-awesome-pro.css', array(), '1.0.0','all');
-    wp_enqueue_style('spacing', get_template_directory_uri() . '/assets/css/spacing.css', array(), '1.0.0','all');
-    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css', array('bootstrap', 'spacing'), '1.0.0','all');
-    wp_enqueue_style('unit-test-style', get_template_directory_uri() . '/assets/css/unit-test.css', array(), '1.0.0','all');
+    wp_enqueue_style('kindaid-fonts', kindaid_fonts_url(), array(), '1.0.0', 'all');
+    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '5.0.0', 'all');
+    wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('font-awesome-pro', get_template_directory_uri() . '/assets/css/font-awesome-pro.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('spacing', get_template_directory_uri() . '/assets/css/spacing.css', array(), '1.0.0', 'all');
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css', array('bootstrap', 'spacing'), '1.0.0', 'all');
+    wp_enqueue_style('unit-test-style', get_template_directory_uri() . '/assets/css/unit-test.css', array(), '1.0.0', 'all');
     wp_enqueue_style('kindaid-style', get_stylesheet_uri());
 
     // 2. Bootstrap (Depends on jQuery)
@@ -211,8 +211,8 @@ function kindaid_fonts_url() {
     Translators: If there are characters in your language that are not supported
     by chosen font(s), translate this to 'off'. Do not translate into your own language.
      */
-    if ( 'off' !== _x( 'on', 'Google font: on or off', 'kindaid' ) ) {
-        $font_url = 'https://fonts.googleapis.com/css2?'. urlencode('family=Libre+Baskerville:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    if ('off' !== _x('on', 'Google font: on or off', 'kindaid')) {
+        $font_url = 'https://fonts.googleapis.com/css2?' . urlencode('family=Libre+Baskerville:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
     }
     return $font_url;
 }
@@ -283,4 +283,22 @@ function kindaid_blog_pagination() {
         }
         echo "</ul>";
     }
+}
+
+
+// / This code filters the Archive widget to include the post count inside the link /
+add_filter( 'get_archives_link', 'kindaid_archive_count_span' );
+function kindaid_archive_count_span( $links ) {
+    $links = str_replace('</a>&nbsp;(', '<span > (', $links);
+    $links = str_replace(')', ')</span></a> ', $links);
+    return $links;
+}
+
+
+// / This code filters the Category widget to include the post count inside the link /
+add_filter('wp_list_categories', 'kindaid_cat_count_span');
+function kindaid_cat_count_span($links) {
+  $links = str_replace('</a> (', '<span> (', $links);
+  $links = str_replace(')', ')</span></a>', $links);
+  return $links;
 }
