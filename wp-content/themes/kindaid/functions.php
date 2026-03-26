@@ -219,13 +219,6 @@ function kindaid_fonts_url() {
 
 //KindAid Require Files
 include_once get_template_directory() . '/include/theme-helper.php';
-// include_once get_template_directory() . '/include/footer-info.php';
-// include_once get_template_directory() . '/include/footer-contact-info.php';
-// include_once get_template_directory() . '/include/footer-newsletter.php';
-// include_once get_template_directory() . '/include/footer-contact-info-2.php';
-// include_once get_template_directory() . '/include/blog-author.php';
-// include_once get_template_directory() . '/include/blog-recent-post.php';
-// include_once get_template_directory() . '/include/blog-banner.php';
 include_once get_template_directory() . '/include/nav-walker.php';
 include_once get_template_directory() . '/include/breadcrumb.php';
 
