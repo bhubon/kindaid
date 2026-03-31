@@ -32,3 +32,13 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
     font-size: 170px;
     line-height: 1;
 }
+div.tp-join-shape img{
+    width: 140px;
+}
+.tp-step-row .col-lg-3:last-child .tp-step-arrow{
+    display: none !important;
+}
+
+.tp-blog-cat span:last-child::before{
+    display: none;
+}
