@@ -45,6 +45,7 @@ class kindAid_Brand extends \Elementor\Widget_Base {
                 'options' => [
                     'layout-01' => esc_html__('Layout 01', 'textdomain'),
                     'layout-02' => esc_html__('Layout 02', 'textdomain'),
+                    'layout-03' => esc_html__('Layout 03', 'textdomain'),
                 ],
                 'label_block' => true,
             ]
@@ -405,10 +406,44 @@ class kindAid_Brand extends \Elementor\Widget_Base {
                                 ?>
                                 <div class="swiper-slide">
                                     <div class="tp-brand-2-item">
-                                        <a target="_blank" href="<?php echo esc_url($item['url']); ?>"><img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>"</a>
+                                        <a target="_blank" href="<?php echo esc_url($item['url']); ?>"><img
+                                                src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>"> </a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php elseif ($settings['design_layout'] == 'layout-03'): ?>
+            <?php if (!empty($settings['list'])): ?>
+                <div class="tp-brand-area fix">
+                    <div class="container-fluid container-1790">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="tp-brand-3-wrap text-center">
+                                    <div class="swiper-container tp-brand-3-slider-active">
+                                        <div class="swiper-wrapper slide-transtion">
+                                            <?php
+                                            foreach ($settings['list'] as $item):
+                                                if (!empty($item['image'])) {
+                                                    $image_url = !empty($item['image']['id']) ? wp_get_attachment_image_url($item['image']['id'], 'full') : $item['image']['url'];
+                                                    $image_alt = !empty($item['image']['id']) ? get_post_meta($item['image']['id'], '_wp_attachment_image_alt', true) : '';
+                                                }
+                                                ?>
+                                                <div class="swiper-slide">
+                                                    <div class="tp-brand-2-item">
+                                                        <a target="_blank" href="<?php echo esc_url($item['url']); ?>">
+                                                            <img src="<?php echo esc_url($image_url); ?>"
+                                                                alt="<?php echo esc_attr($image_alt); ?>">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
