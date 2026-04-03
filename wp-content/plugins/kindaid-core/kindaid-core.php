@@ -44,6 +44,9 @@ function register_hello_world_widget($widgets_manager) {
 	require_once(__DIR__ . '/widgets/button.php');
 	require_once(__DIR__ . '/widgets/brand.php');
 	require_once(__DIR__ . '/widgets/team.php');
+	require_once(__DIR__ . '/widgets/slider.php');
+	require_once(__DIR__ . '/widgets/icon-box.php');
+	require_once(__DIR__ . '/widgets/about.php');
 
 }
 add_action('elementor/widgets/register', 'register_hello_world_widget');
