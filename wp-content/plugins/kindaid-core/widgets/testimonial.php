@@ -1,12 +1,12 @@
 <?php
-class kindAid_About extends \Elementor\Widget_Base {
+class kindAid_Testkmonial extends \Elementor\Widget_Base {
 
     public function get_name(): string {
-        return 'kindaid_about';
+        return 'kindaid_testimonial';
     }
 
     public function get_title(): string {
-        return esc_html__('About', 'kindaid');
+        return esc_html__('Testimonial', 'kindaid');
     }
 
     public function get_icon(): string {
@@ -18,7 +18,7 @@ class kindAid_About extends \Elementor\Widget_Base {
     }
 
     public function get_keywords(): array {
-        return ['about', 'home 01 hero', 'kindaid'];
+        return ['testimonial', 'home 01 hero', 'kindaid'];
     }
 
     protected function register_controls(): void {
@@ -27,59 +27,59 @@ class kindAid_About extends \Elementor\Widget_Base {
     }
 
     protected function register_control_section() {
-        // Content Tab Start
 
         $this->start_controls_section(
             'content_section',
             [
-                'label' => esc_html__('Title & Content', 'kindaid-core'),
+                'label' => esc_html__('Testimonial List', 'kindaid-core'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        $this->add_control(
-            'sub_title',
+        $repeater = new \Elementor\Repeater();
+
+        $repeater->add_control(
+            'subject',
             [
-                'label' => esc_html__('Sub Title', 'kindaid-core'),
+                'label' => esc_html__('Subject', 'kindaid-core'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('About foundation', 'kindaid-core'),
+                'default' => esc_html__('Helping others improves!', 'kindaid-core'),
                 'label_block' => true,
             ]
         );
-
-        $this->add_control(
-            'title',
-            [
-                'label' => esc_html__('Title', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('Helping Each <br> Other can Make <span>World</span><br> Better', 'kindaid-core'),
-            ]
-        );
-
-        $this->add_control(
-            'content',
+        $repeater->add_control(
+            'review_text',
             [
                 'label' => esc_html__('Content', 'kindaid-core'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('To ensure a sustainable future we believe there is an urgent need to make change happen faster and at greater scale than what we witness today.', 'kindaid-core'),
+                'default' => esc_html__('Health care are essential for a child\'s growth.', 'kindaid-core'),
             ]
         );
 
-        $this->end_controls_section();
-
-        // Image Section Start
-        $this->start_controls_section(
-            'image_section',
+        $repeater->add_control(
+            'name',
             [
-                'label' => esc_html__('Image', 'textdomain'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'label' => esc_html__('Name', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Arc Joan', 'kindaid-core'),
+                'label_block' => true,
             ]
         );
 
-        $this->add_control(
+        $repeater->add_control(
+            'desgination',
+            [
+                'label' => esc_html__('Designation', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Verified Buyer', 'kindaid-core'),
+                'label_block' => true,
+            ]
+        );
+
+        $repeater->add_control(
             'image',
             [
-                'label' => esc_html__('Choose Image', 'textdomain'),
+                'label' => esc_html__('Avatar', 'textdomain'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -87,89 +87,35 @@ class kindAid_About extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->end_controls_section();
-        // Image Section End
-
-
-        // Button Section Start
-        $this->start_controls_section(
-            'button_section',
-            [
-                'label' => esc_html__('Button', 'textdomain'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
         $this->add_control(
-            'button_text',
+            'list',
             [
-                'label' => esc_html__('Button Text', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Discover More', 'kindaid-core'),
-            ]
-        );
-
-        $this->add_control(
-            'button_url',
-            [
-                'label' => esc_html__('Button Link', 'textdomain'),
-                'type' => \Elementor\Controls_Manager::URL,
-                'options' => ['url', 'is_external', 'nofollow'],
+                'label' => esc_html__('Services List', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
                 'default' => [
-                    'url' => '#',
-                    'is_external' => false,
-                    'nofollow' => false,
-                    // 'custom_attributes' => '',
+                    [
+                        'subject' => esc_html__('Helping others improves!', 'kindaid-core'),
+                        'review_text' => __('“Their transparency and commitment to making<br>
+                        a real difference is unmatched. I’m proud to support a<br> cause that brings hope”', 'kindaid-core'),
+                        'name' => esc_html__('Arc Joan', 'kindaid-core'),
+                        'desgination' => esc_html__('Verified Buyer', 'kindaid-core'),
+                    ],
+                    [
+                        'subject' => esc_html__('Helping business improves!', 'kindaid-core'),
+                        'review_text' => __('“Their transparency and commitment to making<br>
+                        a real difference is unmatched. I’m proud to support a<br> cause that brings hope”', 'kindaid-core'),
+                        'name' => esc_html__('John Doe', 'kindaid-core'),
+                        'desgination' => esc_html__('Marketing Manager', 'kindaid-core'),
+                    ],
                 ],
-                'label_block' => true,
+                'title_field' => '{{{ subject }}}',
             ]
         );
 
         $this->end_controls_section();
-        // Button Section End
 
-        // Client Info Section Start
-        $this->start_controls_section(
-            'info_section',
-            [
-                'label' => esc_html__('Info', 'kindaid-core'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
 
-        $this->add_control(
-            'number',
-            [
-                'label' => esc_html__('Number', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('50k', 'kindaid-core'),
-                'label_block' => true,
-            ]
-        );
-
-        $this->add_control(
-            'info_content',
-            [
-                'label' => esc_html__('Info Content', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('Trust by Clients and<br> Organizations', 'kindaid-core'),
-                'label_block' => true,
-            ]
-        );
-
-        $this->add_control(
-            'info_image',
-            [
-                'label' => esc_html__('Choose Image', 'textdomain'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-        // Client Info Section End
     }
 
     protected function register_style_section() {
@@ -465,90 +411,84 @@ class kindAid_About extends \Elementor\Widget_Base {
     protected function render(): void {
         $settings = $this->get_settings_for_display();
 
-        if (!empty($settings['image'])):
-            $image_url = !empty($settings['image']['id']) ? wp_get_attachment_image_url($settings['image']['id'], 'full') : $settings['image']['url'];
-            $image_alt = !empty($settings['image']['id']) ? get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true) : '';
-        endif;
-
-        if (!empty($settings['info_image'])):
-            $info_image_url = !empty($settings['info_image']['id']) ? wp_get_attachment_image_url($settings['info_image']['id'], 'full') : $settings['info_image']['url'];
-            $info_image_alt = !empty($settings['info_image']['id']) ? get_post_meta($settings['info_image']['id'], '_wp_attachment_image_alt', true) : '';
-        endif;
-
-        if (!empty($settings['button_url'])) {
-            $this->add_link_attributes('button_arg', $settings['button_url']);
-            $this->add_render_attribute('button_arg', 'class', 'tp-btn tp-btn-secondary tp-btn-animetion');
-        }
         ?>
 
 
-        <div class="tp-about-area fix">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-xxl-6 col-xl-6">
-                        <div class="tp-about-thumb mr-80 h-100">
-                            <?php if (!empty($image_url)): ?>
-                                <img class="w-100" src="<?php echo esc_url($image_url); ?>"
-                                    alt="<?php echo esc_attr($image_alt); ?>">
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <div class="col-xxl-5 col-xl-6">
-                        <div class="tp-about-content tp-about-2-text pt-80 pb-80 mr-100">
-                            <?php if (!empty($settings['sub_title'])): ?>
-                                <span class="tp-section-subtitle d-inline-block mb-15 wow fadeInUp" data-wow-duration=".9s"
-                                    data-wow-delay=".3s"><?php echo esc_html($settings['sub_title']); ?></span>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['title'])): ?>
-                                <h2 class="tp-section-title mb-35 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".4s">
-                                    <?php echo kd_kses($settings['title']); ?>
-                                </h2>
-                            <?php endif; ?>
-                            <div class="tp-about-dec-wrap wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".5s">
-                                <div class="row">
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="tp-about-dec">
-                                            <?php if (!empty($settings['content'])): ?>
-                                                <p class="mb-40"><?php echo kd_kses($settings['content']); ?></p>
+        <div class="tp-testimonial-area">
+            <div class="container container-1324 p-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-9 col-lg-10 col-md-11 text-center">
+                        <div class="swiper-container tp-testimonal-slider-active">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($settings['list'] as $item):
+                                    if (!empty($item['image'])) {
+                                        $image_url = !empty($item['image']['id']) ? wp_get_attachment_image_url($item['image']['id'], 'full') : $item['image']['url'];
+                                        $image_alt = !empty($item['image']['id']) ? get_post_meta($item['image']['id'], '_wp_attachment_image_alt', true) : '';
+                                    }
+                                    ?>
+                                    <div class="swiper-slide">
+                                        <div class="tp-testimonal">
+                                            <div class="tp-testimonal-star mb-5">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <?php if (!empty($item['subject'])): ?>
+                                                <span
+                                                    class="tp-testimonal-label mb-20 d-inline-block"><?php echo esc_html($item['subject']); ?></span>
                                             <?php endif; ?>
-                                            <?php if (!empty($settings['button_text'])): ?>
-                                                <a <?php echo $this->get_render_attribute_string('button_arg'); ?>>
-                                                    <span class="btn-text"><?php echo esc_html($settings['button_text']); ?></span>
-                                                    <span class="btn-icon">
-                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M1 7H13" stroke="currentColor" stroke-width="1.8"
-                                                                stroke-linecap="round" stroke-linejoin="round" />
-                                                            <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.8"
-                                                                stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                    </span>
-                                                </a>
+
+                                            <?php if (!empty($item['review_text'])): ?>
+                                                <h4 class="tp-testimonal-dec"><?php echo kd_kses($item['review_text']); ?></h4>
                                             <?php endif; ?>
+
+                                            <div class="tp-testimonal-user mt-40">
+                                                <div class="tp-testimonal-img">
+                                                    <?php if (!empty($image_url)): ?>
+                                                        <img src="<?php echo esc_url($image_url); ?>"
+                                                            alt="<?php echo esc_attr($image_alt); ?>">
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="tp-testimonal-bio">
+                                                    <?php if (!empty($item['name'])): ?>
+                                                        <h4 class="tp-testimonal-name"><?php echo esc_html($item['name']); ?></h4>
+                                                    <?php endif; ?>
+
+                                                    <?php if (!empty($item['designation'])): ?>
+                                                        <span><?php echo esc_html($item['designation']); ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="tp-about-user pl-20">
-                                            <?php if (!empty($settings['number'])): ?>
-                                                <h4><?php echo esc_html($settings['number']); ?></h4>
-                                            <?php endif; ?>
-                                            <?php if (!empty($settings['info_content'])): ?>
-                                                <p class="mb-20"><?php echo kd_kses($settings['info_content']); ?></p>
-                                            <?php endif; ?>
-                                            <?php if (!empty($info_image_url)): ?>
-                                                <img src="<?php echo esc_url($info_image_url); ?>"
-                                                    alt="<?php echo esc_attr($info_image_alt); ?>">
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="tp-testimonial-arrow text-start text-md-end">
+                    <button class="tp-test-arrow-prev tp-test-arrow">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 7H1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="tp-test-arrow-next tp-test-arrow">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.00049 7H13.0005" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M7.00049 1L13.0005 7L7.00049 13" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
         <?php
     }
 }
-$widgets_manager->register(new \kindAid_About());
+$widgets_manager->register(new \kindAid_Testkmonial());
