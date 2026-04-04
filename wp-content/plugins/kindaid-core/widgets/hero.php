@@ -27,8 +27,33 @@ class kindAid_Hero extends \Elementor\Widget_Base {
     }
 
     protected function register_control_section() {
-        // Content Tab Start
 
+
+        $this->start_controls_section(
+            'layout_section',
+            [
+                'label' => esc_html__('Layout', 'textdomain'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'design_layout',
+            [
+                'label' => esc_html__('Select Layout', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'layout-01',
+                'options' => [
+                    'layout-01' => esc_html__('Layout 01', 'textdomain'),
+                    'layout-02' => esc_html__('Layout 02', 'textdomain'),
+                ],
+                'label_block' => true,
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+        // Content Tab Start
         $this->start_controls_section(
             'hero_section',
             [
@@ -44,6 +69,9 @@ class kindAid_Hero extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'default' => esc_html__('Hero Sub Title Here', 'kindaid-core'),
                 'label_block' => true,
+                'condition' => [
+                    'design_layout' => 'layout-01',
+                ],
             ]
         );
 
@@ -62,6 +90,9 @@ class kindAid_Hero extends \Elementor\Widget_Base {
                 'label' => esc_html__('Content', 'kindaid-core'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'default' => esc_html__('Hero Content Here', 'kindaid-core'),
+                'condition' => [
+                    'design_layout' => 'layout-01',
+                ],
             ]
         );
 
@@ -73,6 +104,9 @@ class kindAid_Hero extends \Elementor\Widget_Base {
             [
                 'label' => esc_html__('Image', 'textdomain'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'design_layout' => 'layout-01',
+                ],
             ]
         );
 
@@ -89,6 +123,48 @@ class kindAid_Hero extends \Elementor\Widget_Base {
 
         $this->end_controls_section();
         // Image Section End
+
+
+        // Video Section Start
+        $this->start_controls_section(
+            'video_section',
+            [
+                'label' => esc_html__('Video', 'textdomain'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'design_layout' => 'layout-02',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'mp4_video_url',
+            [
+                'label' => esc_html__('MP4 Video URL', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('', 'kindaid-core'),
+            ]
+        );
+
+        $this->add_control(
+            'video_label',
+            [
+                'label' => esc_html__('Video Label', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __('Feature <br> Who are you', 'kindaid-core'),
+            ]
+        );
+
+        $this->add_control(
+            'popup_video_url',
+            [
+                'label' => esc_html__('Popup Video URL', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('#', 'kindaid-core'),
+            ]
+        );
+
+        $this->end_controls_section();
 
 
         // Button Section Start
@@ -457,65 +533,60 @@ class kindAid_Hero extends \Elementor\Widget_Base {
     protected function render(): void {
         $settings = $this->get_settings_for_display();
 
-        $image_url = !empty($settings['image']['id']) ? wp_get_attachment_image_url($settings['image']['id'], 'full') : $settings['image']['url'];
-        $image_alt = !empty($settings['image']['id']) ? get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true) : '';
 
-        if (!empty($settings['button_url'])) {
-            $this->add_link_attributes('button_arg', $settings['button_url']);
-            $this->add_render_attribute('button_arg', 'class', 'tp-btn tp-btn-animetion mr-5 mb-10');
-        }
-
-        if (!empty($settings['button_02_url'])) {
-            $this->add_link_attributes('button_02_arg', $settings['button_02_url']);
-            $this->add_render_attribute('button_02_arg', 'class', 'tp-btn tp-btn-secondary tp-btn-animetion mb-10');
-        }
         ?>
-        <div class="tp-hero-area el-bg fix">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-xxl-6 col-xl-7 col-lg-6 offset-xxl-1">
-                        <div class="tp-hero-content tp-hero-spacing">
-                            <?php if (!empty($settings['sub_title'])): ?>
-                                <span class="tp-hero-subtitle el-sub-title d-inline-block mb-25 ml-5  wow fadeInUp"
-                                    data-wow-duration=".9s"
-                                    data-wow-delay=".4s"><?php echo esc_html($settings['sub_title']); ?></span>
-                            <?php endif; ?>
-                            <?php if (!empty($settings['title'])): ?>
-                                <h2 class="tp-hero-title el-title mb-80 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".5s">
-                                    <?php echo kd_kses($settings['title']); ?>
-                                </h2>
-                            <?php endif; ?>
-                            <div class="tp-hero-btn-wrap">
-                                <?php if (!empty($settings['content'])): ?>
-                                    <div class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s">
-                                        <p class="tp-hero-dec el-content mb-30"><?php echo kd_kses($settings['content']); ?></p>
-                                    </div>
-                                <?php endif; ?>
-                                <div class="tp-hero-btn wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".7s">
 
+        <?php if ($settings['design_layout'] == 'layout-02'): ?>
+            <?php
+
+            if (!empty($settings['button_url'])) {
+                $this->add_link_attributes('button_arg', $settings['button_url']);
+                $this->add_render_attribute('button_arg', 'class', 'tp-btn tp-btn-animetion mr-5 mb-10');
+            }
+
+            if (!empty($settings['button_02_url'])) {
+                $this->add_link_attributes('button_02_arg', $settings['button_02_url']);
+                $this->add_render_attribute('button_02_arg', 'class', 'tp-btn tp-btn-secondary tp-btn-animetion mb-10');
+            }
+            ?>
+            <div class="tp-hero-area tp-hero-3-style fix">
+                <div class="tp-hero-3-video-container">
+                    <video loop="" muted="" autoplay="" playsinline="">
+                        <source src="<?php echo esc_url($settings['mp4_video_url']); ?>" type="video/mp4">
+                    </video>
+                </div>
+                <div class="container-fluid container-1790">
+                    <div class="row align-items-end">
+                        <div class="col-lg-7">
+                            <div class="tp-hero-content p-relative z-index-2 mb-30">
+                                <?php if (!empty($settings['title'])): ?>
+                                    <h2 class="tp-hero-title mb-40 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".3s">
+                                        <?php echo kd_kses($settings['title']); ?>
+                                    </h2>
+                                <?php endif; ?>
+                                <div class="tp-hero-btn wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".4s">
                                     <?php if (!empty($settings['button_text'])): ?>
                                         <a <?php echo $this->get_render_attribute_string('button_arg'); ?>>
                                             <span class="btn-text"><?php echo esc_html($settings['button_text']); ?></span>
                                             <span class="btn-icon">
                                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 7H13" stroke="currentColor" stroke-width="1.8"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M1 7H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
                                                     <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.8"
                                                         stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                             </span>
                                         </a>
                                     <?php endif; ?>
-
                                     <?php if (!empty($settings['button_02_text'])): ?>
                                         <a <?php echo $this->get_render_attribute_string('button_02_arg'); ?>>
                                             <span class="btn-text"><?php echo esc_html($settings['button_02_text']); ?></span>
                                             <span class="btn-icon">
                                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 7H13" stroke="currentColor" stroke-width="1.8"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M1 7H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
                                                     <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.8"
                                                         stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
@@ -525,19 +596,110 @@ class kindAid_Hero extends \Elementor\Widget_Base {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <?php if (!empty($image_url)): ?>
-                        <div class="col-xxl-5 col-xl-5 col-lg-6">
-                            <div class="tp-hero-thumb ml-20">
-                                <img class="w-100" src="<?php echo esc_url($image_url); ?>"
-                                    alt="<?php echo esc_attr($image_alt); ?>">
+                        <div class="col-lg-5">
+                            <div class="d-flex justify-content-lg-end">
+                                <div class="tp-hero-3-video-wrap mb-40 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".5s">
+                                    <span class="tp-hero-3-video-text mr-25"><?php echo kd_kses($settings['video_label']); ?></span>
+                                    <a class="tp-hero-3-video-btn popup-video" href="<?php echo esc_url($settings['popup_video_url']); ?>">
+                                        <span>
+                                            <svg width="15" height="17" viewBox="0 0 15 17" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.660254 1.73205C0.660254 0.962251 1.49359 0.481125 2.16025 0.866025L14.1603 7.79423C14.8269 8.17913 14.8269 9.14138 14.1603 9.52628L2.16025 16.4545C1.49359 16.8394 0.660254 16.3583 0.660254 15.5885L0.660254 1.73205Z"
+                                                    fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
-        </div>
-        <?php
+            <?php
+        else:
+            $image_url = !empty($settings['image']['id']) ? wp_get_attachment_image_url($settings['image']['id'], 'full') : $settings['image']['url'];
+            $image_alt = !empty($settings['image']['id']) ? get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true) : '';
+
+            if (!empty($settings['button_url'])) {
+                $this->add_link_attributes('button_arg', $settings['button_url']);
+                $this->add_render_attribute('button_arg', 'class', 'tp-btn tp-btn-animetion mr-5 mb-10');
+            }
+
+            if (!empty($settings['button_02_url'])) {
+                $this->add_link_attributes('button_02_arg', $settings['button_02_url']);
+                $this->add_render_attribute('button_02_arg', 'class', 'tp-btn tp-btn-secondary tp-btn-animetion mb-10');
+            }
+            ?>
+            <div class="tp-hero-area el-bg fix">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-xxl-6 col-xl-7 col-lg-6 offset-xxl-1">
+                            <div class="tp-hero-content tp-hero-spacing">
+                                <?php if (!empty($settings['sub_title'])): ?>
+                                    <span class="tp-hero-subtitle el-sub-title d-inline-block mb-25 ml-5  wow fadeInUp"
+                                        data-wow-duration=".9s"
+                                        data-wow-delay=".4s"><?php echo esc_html($settings['sub_title']); ?></span>
+                                <?php endif; ?>
+                                <?php if (!empty($settings['title'])): ?>
+                                    <h2 class="tp-hero-title el-title mb-80 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".5s">
+                                        <?php echo kd_kses($settings['title']); ?>
+                                    </h2>
+                                <?php endif; ?>
+                                <div class="tp-hero-btn-wrap">
+                                    <?php if (!empty($settings['content'])): ?>
+                                        <div class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".6s">
+                                            <p class="tp-hero-dec el-content mb-30"><?php echo kd_kses($settings['content']); ?></p>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="tp-hero-btn wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".7s">
+
+                                        <?php if (!empty($settings['button_text'])): ?>
+                                            <a <?php echo $this->get_render_attribute_string('button_arg'); ?>>
+                                                <span class="btn-text"><?php echo esc_html($settings['button_text']); ?></span>
+                                                <span class="btn-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1 7H13" stroke="currentColor" stroke-width="1.8"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.8"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($settings['button_02_text'])): ?>
+                                            <a <?php echo $this->get_render_attribute_string('button_02_arg'); ?>>
+                                                <span class="btn-text"><?php echo esc_html($settings['button_02_text']); ?></span>
+                                                <span class="btn-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1 7H13" stroke="currentColor" stroke-width="1.8"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.8"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if (!empty($image_url)): ?>
+                            <div class="col-xxl-5 col-xl-5 col-lg-6">
+                                <div class="tp-hero-thumb ml-20">
+                                    <img class="w-100" src="<?php echo esc_url($image_url); ?>"
+                                        alt="<?php echo esc_attr($image_alt); ?>">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    <?php
     }
 }
 $widgets_manager->register(new \kindAid_Hero());

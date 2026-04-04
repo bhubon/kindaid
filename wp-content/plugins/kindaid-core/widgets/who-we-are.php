@@ -92,7 +92,7 @@ class kindAid_Who_We_Are extends \Elementor\Widget_Base {
         // Image Section End
 
         $this->start_controls_section(
-            'content_section',
+            'info_section',
             [
                 'label' => esc_html__('Info List', 'kindaid-core'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
