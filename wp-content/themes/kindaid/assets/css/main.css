@@ -1623,7 +1623,7 @@ input[type=color] {
   -o-transition: all 0.3s 0s ease-out;
   transition: all 0.3s 0s ease-out;
 }
-.tp-pagination li span {
+.tp-pagination li span.current {
   background-color: var(--tp-theme-primary);
   color: var(--tp-common-white);
 }

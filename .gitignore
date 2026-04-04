@@ -10,6 +10,8 @@ wp-content/wpo-cache
 wp-content/fonts
 wp-content/ languages
 wp-content/litespeed
+wp-content/plugins/charitable/vendor/
+wp-content/plugins/charitable/includes/stripe/libraries/vendor/
 local-xdebuginfo. php
 seraph-accel-img-compr-redir.conf
 uploads.zip

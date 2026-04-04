@@ -20,7 +20,7 @@
             text-align: center;
             @include transition();
         }
-        & span{
+        & span.current{
             background-color: var(--tp-theme-primary);
             color: var(--tp-common-white);
         }

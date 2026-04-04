@@ -51,6 +51,8 @@ function register_hello_world_widget($widgets_manager) {
 	require_once(__DIR__ . '/widgets/testimonial.php');
 	require_once(__DIR__ . '/widgets/gallery.php');
 	require_once(__DIR__ . '/widgets/mision-vision.php');
+	require_once(__DIR__ . '/widgets/charity_grid.php');
+	require_once(__DIR__ . '/widgets/charity_slider.php');
 
 }
 add_action('elementor/widgets/register', 'register_hello_world_widget');

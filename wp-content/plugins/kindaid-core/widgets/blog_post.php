@@ -113,20 +113,14 @@ class kindAid_Blog_Post extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
-            'title',
+            'show_pagination',
             [
-                'label' => esc_html__('Title', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Title Here', 'kindaid-core'),
-            ]
-        );
-
-        $this->add_control(
-            'description',
-            [
-                'label' => esc_html__('Content', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('', 'kindaid-core'),
+                'label' => esc_html__('Show Pagination', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'textdomain'),
+                'label_off' => esc_html__('Hide', 'textdomain'),
+                'return_value' => 'yes',
+                'default' => 'yes',
             ]
         );
 
@@ -428,6 +422,7 @@ class kindAid_Blog_Post extends \Elementor\Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
+        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
         $args = [
             'post_type' => ['post'],
@@ -437,6 +432,7 @@ class kindAid_Blog_Post extends \Elementor\Widget_Base {
             'orderby' => $settings['post_order_by'],
             'post__in' => $settings['post_in'],
             'post__not_in' => $settings['post_not_in'],
+            'paged' => $paged,
         ];
 
         if (!empty($settings['post_cat'])) {
@@ -500,6 +496,27 @@ class kindAid_Blog_Post extends \Elementor\Widget_Base {
                     endif;
 
                     ?>
+                </div>
+
+                <div class="row">
+                    <?php if ($settings['show_pagination']): ?>
+                        <div class="col-12">
+                            <div class="tp-pagination text-center mt-20 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".4s">
+                                <?php
+                                echo paginate_links([
+                                    'total' => $query->max_num_pages,
+                                    'current' => $paged,
+                                    'type' => 'list',
+                                    'prev_text' => '<i class="far fa-arrow-left"></i>',
+                                    'next_text' => '<i class="far fa-arrow-right"></i>',
+                                    'end_size' => 1,
+                                    'mid_size' => 1,
+                                ]);
+                                ?>
+
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
