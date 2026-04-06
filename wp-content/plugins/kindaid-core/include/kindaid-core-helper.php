@@ -144,3 +144,22 @@ function kd_kses($tag = '') {
 
     return wp_kses($tag, $allowed_html);
 }
+
+
+/**
+ * donation_single_template
+ * @param mixed $template
+ */
+function donation_single_template($template) {
+    if (is_singular('campaign')) {
+        $new_template = __DIR__ . '/single-donation.php';
+
+        if ('' != $new_template) {
+            return $new_template;
+        }
+    }
+
+    return $template;
+}
+
+add_filter('template_include', 'donation_single_template');

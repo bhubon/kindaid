@@ -32,25 +32,273 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
     font-size: 170px;
     line-height: 1;
 }
-div.tp-join-shape img{
+
+div.tp-join-shape img {
     width: 140px;
 }
-.tp-step-row .col-lg-3:last-child .tp-step-arrow{
+
+.tp-step-row .col-lg-3:last-child .tp-step-arrow {
     display: none !important;
 }
 
-.tp-blog-cat span:last-child::before{
+.tp-blog-cat span:last-child::before {
     display: none;
 }
 
 /* Donation form */
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
-.tp-donation-filter-custom{}
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts li span.description {
+    display: none;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts.has-suggested-amounts {
+    display: inline;
+}
+
+.tp-donation-filter-custom .charitable-donation-form .donation-amounts .donation-amount .custom-donation-amount-wrapper, .tp-donation-filter-custom .charitable-donation-form .donation-amounts .donation-amount>label {
+    display: block;
+    width: auto;
+    padding: .5em 1em;
+    margin: 0;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 31px;
+    line-height: 1;
+    padding: 10px 30px;
+    color: #121018;
+    margin-right: 2px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.tp-donation-filter-custom .charitable-donation-form .donation-amounts .donation-amount {
+    border: 1px solid rgba(98, 0, 53, 0.1);
+    border-radius: 31px;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts li {
+    margin: 0;
+    display: inline-block;
+}
+
+.tp-donation-filter-custom .charitable-donation-form .donation-amounts .donation-amount.selected {
+    background: var(--tp-theme-primary);
+    color: var(--tp-common-white);
+    border-color: var(--tp-theme-primary);
+}
+
+.tp-donation-filter-custom .charitable-donation-form .donation-amounts .donation-amount .amount {
+    font-weight: inherit;
+}
+
+.tp-donation-filter-custom .charitable-donation-form .donation-amounts .donation-amount.selected .amount {
+    color: var(--tp-common-white);
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts li.custom-donation-amount span.description {
+    display: inline-block;
+}
+
+.tp-donation-filter-custom .charitable-donation-options {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .charitable-fieldset {
+    margin: 0;
+    padding: 0 !important;
+    border: none;
+    margin-bottom: 40px;
+    padding-bottom: 40px !important;
+    border-bottom: 1px solid rgba(18, 16, 24, 0.08);
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts.donation-suggested-amount {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts.donation-suggested-amount span.custom-donation-amount-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts.donation-suggested-amount li {
+    border: 0;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .donation-amounts.donation-suggested-amount li input[type=text] {
+    width: 280px;
+    height: 54px;
+    border-radius: 62px;
+    padding-left: 55px;
+    background: #f0e8d1;
+    border: none;
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--tp-common-mulberry);
+}
+
+.tp-donation-filter-custom .custom-donation-input::placeholder {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 15px;
+    color: var(--tp-common-mulberry);
+}
+
+.tp-donation-filter-custom .custom-donation-amount-wrapper {
+    position: relative;
+}
+
+.tp-donation-filter-custom .custom-donation-amount-wrapper::before {
+    content: '$';
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    background: var(--tp-theme-secondary);
+    color: var(--tp-common-mulberry);
+    text-align: center;
+    border-radius: 30px;
+    font-weight: 500;
+    line-height: 33px;
+    bottom: 10px;
+    left: 10px;
+    font-size: 18px;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard .charitable-fieldset .charitable-form-header {
+    font-size: 21px;
+    line-height: 21px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: var(--tp-ff-p);
+    font-weight: 600;
+    color: var(--tp-common-mulberry);
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard #charitable-donor-fields #charitable-user-fields {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard #charitable-donor-fields #charitable-user-fields .charitable-form-field {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 0 15px;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard #charitable-donor-fields #charitable-user-fields .charitable-form-field input {
+    width: auto;
+    border-radius: 62px;
+    width: 100%;
+    height: 54px;
+    color: var(--tp-common-mulberry);
+    background: var(--tp-common-emerald);
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0 26px 0 26px;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard #charitable-donor-fields #charitable-user-fields .charitable-form-field#charitable_field_email {
+    width: 100%;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard #charitable-donor-fields #charitable-user-fields .charitable-form-field label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--tp-common-mulberry);
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+.tp-donation-filter-custom #charitable-donation-login-form .input {
+    border-radius: 62px;
+    width: 100%;
+    height: 54px;
+    color: var(--tp-common-mulberry);
+    background: var(--tp-common-emerald);
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.tp-donation-filter-custom #charitable-donation-login-form #wp-submit {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--tp-common-white);
+    background: var(--tp-theme-primary);
+    line-height: 1;
+    padding: 15px 35px;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    border: 0;
+    border-radius: 30px;
+}
+
+.tp-donation-filter-custom .charitable-login-form label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--tp-common-mulberry);
+    margin-bottom: 6px;
+}
+
+.tp-donation-filter-custom .login-prompt a {
+    border-bottom: 1px dotted;
+}
+
+.tp-donation-filter-custom .charitable-donation-form.charitable-template-standard #charitable-gateway-fields .charitable-gateway-fields.charitable-form-fields input {
+    line-height: 1.2;
+    border-radius: 62px;
+    width: 100%;
+    height: 54px;
+    color: var(--tp-common-mulberry);
+    background: var(--tp-common-emerald);
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0 20px;
+}
+
+.tp-donation-filter-custom .charitable-submit-field .button {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--tp-common-white);
+    background: var(--tp-theme-primary);
+    line-height: 1;
+    padding: 20px 59px;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    border: 0;
+    border-radius: 30px;
+}
+
+.tp-donation-filter-custom fieldset#charitable-gateway-fields {
+    border: 0;
+    padding-bottom: 0 !important;
+    margin-bottom: 20px;
+}
+
+.tp-donation-filter-custom .charitable-notice {
+    padding: 11px 20px;
+    margin-bottom: 1em;
+    border: 1px solid;
+    padding-bottom: 13px;
+    border-radius: 30px;
+}
+
+.tp-donation-filter-custom {}
+
+.tp-donation-filter-custom {}
