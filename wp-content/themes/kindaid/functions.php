@@ -93,7 +93,17 @@ function kindaid_widgets() {
         'name' => __('Donation Sidebar', 'kindaid'),
         'id' => 'donation-sidebar',
         'description' => __('Widgets in this area will be shown on Donation Sidebar.', 'kindaid'),
-        'before_widget' => '<div id="%1$s" class="tp-widget-sidebar ml-65 %2$s" >',
+        'before_widget' => '<div id="%1$s" class="tp-widget-sidebar mb-20 %2$s" >',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-widget-main-title mb-25">',
+        'after_title' => '</h3>',
+    ));
+    // Event Sidebar
+    register_sidebar(array(
+        'name' => __('Event Sidebar', 'kindaid'),
+        'id' => 'event-sidebar',
+        'description' => __('Widgets in this area will be shown on Event Sidebar.', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-widget-sidebar mb-20 %2$s" >',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="tp-widget-main-title mb-25">',
         'after_title' => '</h3>',

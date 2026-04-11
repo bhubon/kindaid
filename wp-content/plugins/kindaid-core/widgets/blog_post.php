@@ -449,7 +449,7 @@ class kindAid_Blog_Post extends \Elementor\Widget_Base {
 
         $query = new \WP_Query($args);
         ?>
-        <div class="tp-blog-area tp-blog-style pt-115 pb-90 fix p-relative">
+        <div class="tp-blog-area tp-blog-style fix p-relative">
             <div class="container container-1324">
                 <div class="row">
                     <?php

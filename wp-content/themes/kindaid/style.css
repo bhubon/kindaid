@@ -299,6 +299,6 @@ div.tp-join-shape img {
     border-radius: 30px;
 }
 
-.tp-donation-filter-custom {}
-
-.tp-donation-filter-custom {}
+.wp-singular .etn-es-events-page-container{
+    padding: 0;
+}

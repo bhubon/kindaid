@@ -22,7 +22,11 @@ require_once(__DIR__ . '/include/wp-widgets/footer-contact-info.php');
 require_once(__DIR__ . '/include/wp-widgets/footer-contact-info-2.php');
 require_once(__DIR__ . '/include/wp-widgets/footer-info.php');
 require_once(__DIR__ . '/include/wp-widgets/footer-newsletter.php');
+require_once(__DIR__ . '/include/wp-widgets/event-recent-post.php');
 
+/**
+ * KindAid Core Helper
+ */
 require_once(__DIR__ . '/include/kindaid-core-helper.php');
 
 /**
@@ -51,9 +55,14 @@ function register_hello_world_widget($widgets_manager) {
 	require_once(__DIR__ . '/widgets/testimonial.php');
 	require_once(__DIR__ . '/widgets/gallery.php');
 	require_once(__DIR__ . '/widgets/mision-vision.php');
-	require_once(__DIR__ . '/widgets/charity_grid.php');
-	require_once(__DIR__ . '/widgets/charity_slider.php');
 
+
+	if (class_exists('Charitable')) {
+		require_once(__DIR__ . '/widgets/charity_grid.php');
+		require_once(__DIR__ . '/widgets/charity_slider.php');
+	}
+
+	require_once(__DIR__ . '/widgets/event-grid.php');
 }
 add_action('elementor/widgets/register', 'register_hello_world_widget');
 
