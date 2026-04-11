@@ -505,7 +505,7 @@ class kindAid_Charity_Support extends \Elementor\Widget_Base {
 
         <div class="tp-mission-area">
             <div class="container container-1424">
-                <div class="tp-mission-spacing" data-bg-color="#ffca24">
+                <div class="tp-mission-spacing" style="background-color:#ffca24;">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
                             <div class="tp-mission-content mr-50">

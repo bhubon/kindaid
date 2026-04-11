@@ -50,6 +50,7 @@ function register_hello_world_widget($widgets_manager) {
 	require_once(__DIR__ . '/widgets/team.php');
 	require_once(__DIR__ . '/widgets/slider.php');
 	require_once(__DIR__ . '/widgets/icon-box.php');
+	require_once(__DIR__ . '/widgets/image-box.php');
 	require_once(__DIR__ . '/widgets/about.php');
 	require_once(__DIR__ . '/widgets/who-we-are.php');
 	require_once(__DIR__ . '/widgets/testimonial.php');
