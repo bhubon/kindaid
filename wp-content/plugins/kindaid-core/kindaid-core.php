@@ -60,6 +60,7 @@ function register_hello_world_widget($widgets_manager) {
 	if (class_exists('Charitable')) {
 		require_once(__DIR__ . '/widgets/charity_grid.php');
 		require_once(__DIR__ . '/widgets/charity_slider.php');
+		require_once(__DIR__ . '/widgets/charity_support.php');
 	}
 
 	require_once(__DIR__ . '/widgets/event-grid.php');

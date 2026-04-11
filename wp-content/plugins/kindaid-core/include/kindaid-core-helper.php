@@ -163,3 +163,23 @@ function donation_single_template($template) {
 }
 
 add_filter('template_include', 'donation_single_template');
+
+/**
+ *  Campaign donation coungt
+ * @param mixed $campaign_id
+ * @return string|null
+ */
+function get_campaign_total_donation_count($campaign_id) {
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . 'charitable_campaign_donations';
+
+    $total = $wpdb->get_var(
+        $wpdb->prepare(
+            "SELECT COUNT(*) FROM $table_name WHERE campaign_id=%d",
+            $campaign_id
+        )
+    );
+
+    return $total;
+}

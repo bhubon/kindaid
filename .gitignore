@@ -16,3 +16,4 @@ local-xdebuginfo. php
 seraph-accel-img-compr-redir.conf
 uploads.zip
 google-credentials.json
+**/*google-credentials.json

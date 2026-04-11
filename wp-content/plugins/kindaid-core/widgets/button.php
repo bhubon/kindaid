@@ -393,7 +393,7 @@ class kindAid_Button extends \Elementor\Widget_Base {
             ?>
             <?php if (!empty($settings['button_text'])): ?>
                 <div class="tp-button-box">
-                    <a <?php echo $this->get_render_attribute_string('button_arg'); ?> <span
+                    <a <?php echo $this->get_render_attribute_string('button_arg'); ?>> <span
                         class="btn-text"><?php echo esc_html($settings['button_text']); ?></span>
                         <span class="btn-icon">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
