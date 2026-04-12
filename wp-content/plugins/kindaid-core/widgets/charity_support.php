@@ -217,207 +217,23 @@ class kindAid_Charity_Support extends \Elementor\Widget_Base {
     }
 
     protected function register_style_section() {
-        // Style Tab Start
-
-        // For Section
-        $this->start_controls_section(
-            'section_style',
-            [
-                'label' => esc_html__('Section Style', 'kindaid-core'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'bg_color',
-            [
-                'label' => esc_html__('Sub Title Color', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .el-bg' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'section_margin',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-bg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'section_padding',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-bg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        //For sub-title
-        $this->start_controls_section(
-            'section_sub_title_style',
-            [
-                'label' => esc_html__('Sub Title', 'kindaid-core'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'sub_title_color',
-            [
-                'label' => esc_html__('Sub Title Color', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .el-sub-title' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'sub_title_margin',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-sub-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'sub_title_padding',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-sub-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'sub_title_typography',
-                'selector' => '{{WRAPPER}} .el-sub-title',
-            ]
-        );
-
-        $this->end_controls_section();
 
         // For title
         $this->start_controls_section(
-            'section_title_style',
+            'section_percentage_text_style',
             [
-                'label' => esc_html__('Title', 'kindaid-core'),
+                'label' => esc_html__('Percentage Text', 'kindaid-core'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
-            'title_color',
+            'percentage_text_color',
             [
-                'label' => esc_html__('Title Color', 'kindaid-core'),
+                'label' => esc_html__('Percentage Text Color', 'kindaid-core'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .el-title' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'title_mark_color',
-            [
-                'label' => esc_html__('Title Mark Color', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .el-title span' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'title_margin',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'title_padding',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .el-percentage' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -425,85 +241,12 @@ class kindAid_Charity_Support extends \Elementor\Widget_Base {
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .el-title',
+                'name' => 'percentage_typography',
+                'selector' => '{{WRAPPER}} .el-percentage',
             ]
         );
 
         $this->end_controls_section();
-
-
-        // For Content
-        $this->start_controls_section(
-            'section_content_style',
-            [
-                'label' => esc_html__('Content', 'kindaid-core'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'content_color',
-            [
-                'label' => esc_html__('Color', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .el-content' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'content_margin',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'content_padding',
-            [
-                'label' => esc_html__('Margin', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'default' => [
-                    'top' => '',
-                    'right' => '',
-                    'bottom' => '',
-                    'left' => '',
-                    'unit' => 'px',
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .el-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'content_typography',
-                'selector' => '{{WRAPPER}} .el-content',
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Style Tab End
     }
 
     protected function render(): void {
@@ -561,7 +304,7 @@ class kindAid_Charity_Support extends \Elementor\Widget_Base {
 
                     <div class="tp-help-progress">
                         <div class="tp-progress tp-cta-progress mb-15">
-                            <h3 class="tp-cta-counter mb-5" data-color="#F8F3E7"><?php echo esc_html($percentage); ?></h3>
+                            <h3 class="tp-cta-counter mb-5 el-percentage" ><?php echo esc_html($percentage); ?></h3>
                             <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="<?php echo esc_attr($percentage_raw); ?>" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <div class="progress-bar wow slideInLeft" data-wow-duration="2s" data-wow-delay=".1s" style="width: <?php echo esc_attr($percentage); ?>">

@@ -56,6 +56,9 @@ function register_hello_world_widget($widgets_manager) {
 	require_once(__DIR__ . '/widgets/testimonial.php');
 	require_once(__DIR__ . '/widgets/gallery.php');
 	require_once(__DIR__ . '/widgets/mision-vision.php');
+	require_once(__DIR__ . '/widgets/team-info-list.php');
+	require_once(__DIR__ . '/widgets/social.php');
+	require_once(__DIR__ . '/widgets/skill.php');
 
 
 	if (class_exists('Charitable')) {

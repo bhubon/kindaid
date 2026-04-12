@@ -1,12 +1,12 @@
 <?php
-class kindAid_Mision_Vision extends \Elementor\Widget_Base {
+class kindAid_Skill extends \Elementor\Widget_Base {
 
     public function get_name(): string {
-        return 'kindaid_mision_vision';
+        return 'kindaid_team_info_list';
     }
 
     public function get_title(): string {
-        return esc_html__('Mision And Vision', 'kindaid');
+        return esc_html__('Skill', 'kindaid');
     }
 
     public function get_icon(): string {
@@ -18,7 +18,7 @@ class kindAid_Mision_Vision extends \Elementor\Widget_Base {
     }
 
     public function get_keywords(): array {
-        return ['mission vision', 'home 01 hero', 'kindaid'];
+        return ['skill', 'home 01 hero', 'kindaid'];
     }
 
     protected function register_controls(): void {
@@ -29,78 +29,55 @@ class kindAid_Mision_Vision extends \Elementor\Widget_Base {
     protected function register_control_section() {
 
         $this->start_controls_section(
-            'image_section',
+            'info_section',
             [
-                'label' => esc_html__('Image', 'kindaid-core'),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'image',
-            [
-                'label' => esc_html__('Chose Image', 'textdomain'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'content_section',
-            [
-                'label' => esc_html__('Services List', 'kindaid-core'),
+                'label' => esc_html__('Skill List', 'kindaid-core'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $repeater = new \Elementor\Repeater();
 
-
         $repeater->add_control(
-            'title',
+            'label',
             [
-                'label' => esc_html__('Title', 'kindaid-core'),
+                'label' => esc_html__('Label', 'kindaid-core'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Title Here', 'kindaid-core'),
+                'default' => esc_html__('Donation Collect', 'kindaid-core'),
                 'label_block' => true,
             ]
         );
 
         $repeater->add_control(
-            'content',
+            'progress',
             [
-                'label' => esc_html__('Content', 'kindaid-core'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__('Content Here', 'kindaid-core'),
+                'label' => esc_html__('Progress', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => esc_html__('95', 'kindaid-core'),
             ]
         );
-
 
         $this->add_control(
             'list',
             [
-                'label' => esc_html__('Services List', 'kindaid-core'),
+                'label' => esc_html__('Skill List', 'kindaid-core'),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'title' => esc_html__('Our Mission', 'kindaid-core'),
-                        'content' => esc_html__('To share the love of Christ through worship, discipleship, and service.', 'kindaid-core'),
+                        'label' => esc_html__('Donation Collect', 'kindaid-core'),
+                        'progress' => esc_html__('75', 'kindaid-core'),
                     ],
                     [
-                        'title' => esc_html__('Our Vision', 'kindaid-core'),
-                        'content' => esc_html__('A thriving community transformed by faith, love, and action.', 'kindaid-core'),
+                        'label' => esc_html__('Successful Events', 'kindaid-core'),
+                        'progress' => esc_html__('90', 'kindaid-core'),
                     ],
                     [
-                        'title' => esc_html__('Our Values', 'kindaid-core'),
-                        'content' => esc_html__('Faith, Community, Service, and Compassion.', 'kindaid-core'),
+                        'label' => esc_html__('Social Works', 'kindaid-core'),
+                        'progress' => esc_html__('85', 'kindaid-core'),
                     ],
                 ],
-                'title_field' => '{{{ title }}}',
+                'title_field' => '{{{ label }}}',
             ]
         );
 
@@ -401,46 +378,34 @@ class kindAid_Mision_Vision extends \Elementor\Widget_Base {
 
     protected function render(): void {
         $settings = $this->get_settings_for_display();
-
-        if (!empty($settings['image'])) {
-            $image_url = !empty($settings['image']['id']) ? wp_get_attachment_image_url($settings['image']['id'], 'full') : $settings['image']['url'];
-            $image_alt = !empty($settings['image']['id']) ? get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true) : '';
-        }
-
         ?>
 
-        <div class="tp-mission-area">
-            <div class="container container-1424">
-                <div class="tp-mission-3-wrap position-relative">
+        <div class="tp-team-skill">
+            <?php foreach ($settings['list'] as $item): ?>
+                <div class="tp-progress tp-progress-2 mb-30">
                     <div class="row">
-                        <?php
-                        foreach ($settings['list'] as $key=> $item):
-                            $border_class = ($key == 2) ? '' : 'tp-mission-3-border';
-                            ?>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="tp-mission-3-item <?php echo esc_attr($border_class); ?> mb-30 text-center">
-                                    <?php if (!empty($item['title'])): ?>
-                                        <h4 class="tp-mission-3-title mb-15"><?php echo esc_html($item['title']) ?></h4>
-                                    <?php endif; ?>
-
-                                    <?php if (!empty($item['content'])): ?>
-                                        <p class="tp-mission-3-dec"><?php echo kd_kses($item['content']); ?></p>
-                                    <?php endif; ?>
-
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
+                        <div class="col-6">
+                            <?php if (!empty($item['label'])): ?>
+                                <h6 class="tp-team-skill-title mb-5">
+                                    <?php echo esc_html($item['label']) ?>
+                                </h6>
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-6">
+                            <?php if (!empty($item['progress'])): ?>
+                                <label><?php echo esc_html($item['progress']) ?> <?php echo esc_html__('%','kindaid'); ?></label>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    <div class="tp-mission-3-text">
-
-                        <?php if (!empty($image_url)): ?>
-                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                        <?php endif; ?>
+                    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="<?php echo esc_attr($item['progress']) ?>" aria-valuemin="0"
+                        aria-valuemax="100">
+                        <div class="progress-bar wow slideInLeft" data-wow-duration="2s" data-wow-delay=".1s" style="width: <?php echo esc_attr($item['progress']) ?>%">
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
         <?php
     }
 }
-$widgets_manager->register(new \kindAid_Mision_Vision());
+$widgets_manager->register(new \kindAid_Skill());
