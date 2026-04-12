@@ -498,7 +498,7 @@ class kindAid_Charity_Grid extends \Elementor\Widget_Base {
                                 $donated_amount = charitable_format_money($campaign->get_donated_amount());
                                 $button_text = $campaign->get('donate_button_text', true);
                                 $percentage = $campaign->get_percent_donated_raw();
-                                $percentage = $percentage . '%';
+                                $percentage = round($percentage) . '%';
                                 ?>
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="tp-causes-wrap mb-30">
@@ -604,7 +604,7 @@ class kindAid_Charity_Grid extends \Elementor\Widget_Base {
                                 $donated_amount = charitable_format_money($campaign->get_donated_amount());
                                 $button_text = $campaign->get('donate_button_text', true);
                                 $percentage = $campaign->get_percent_donated_raw();
-                                $percentage = $percentage . '%';
+                                $percentage = round($percentage) . '%';
                                 ?>
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="tp-causes-wrap mb-30">
@@ -709,7 +709,7 @@ class kindAid_Charity_Grid extends \Elementor\Widget_Base {
                                 $donated_amount = charitable_format_money($campaign->get_donated_amount());
                                 $button_text = $campaign->get('donate_button_text', true);
                                 $percentage = $campaign->get_percent_donated_raw();
-                                $percentage = $percentage . '%';
+                                $percentage = round($percentage) . '%';
                                 ?>
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="tp-causes-wrap mb-30 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".3s">

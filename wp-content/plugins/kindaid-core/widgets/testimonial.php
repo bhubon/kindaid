@@ -28,6 +28,70 @@ class kindAid_Testkmonial extends \Elementor\Widget_Base {
 
     protected function register_control_section() {
 
+
+        $this->start_controls_section(
+            'layout_section',
+            [
+                'label' => esc_html__('Layout', 'textdomain'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'design_layout',
+            [
+                'label' => esc_html__('Select Layout', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'layout-1',
+                'options' => [
+                    'layout-1' => esc_html__('Layout 01', 'textdomain'),
+                    'layout-2' => esc_html__('Layout 02', 'textdomain'),
+                ],
+                'label_block' => true,
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'heading_section',
+            [
+                'label' => esc_html__('Title & Content', 'kindaid-core'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'design_layout' => 'layout-2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'sub_title',
+            [
+                'label' => esc_html__('Sub Title', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Sub Title Here', 'kindaid-core'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'title',
+            [
+                'label' => esc_html__('Title', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Title Here', 'kindaid-core'),
+            ]
+        );
+
+        $this->add_control(
+            'description',
+            [
+                'label' => esc_html__('Content', 'kindaid-core'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__('', 'kindaid-core'),
+            ]
+        );
+        $this->end_controls_section();
+
         $this->start_controls_section(
             'content_section',
             [
@@ -114,6 +178,44 @@ class kindAid_Testkmonial extends \Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
+
+
+        // Image Section Start
+        $this->start_controls_section(
+            'image_section',
+            [
+                'label' => esc_html__('Image', 'textdomain'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'design_layout' => 'layout-2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'image',
+            [
+                'label' => esc_html__('Choose Image', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'image_02',
+            [
+                'label' => esc_html__('Choose Image 02', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+        // Image Section End
 
 
     }
@@ -413,82 +515,188 @@ class kindAid_Testkmonial extends \Elementor\Widget_Base {
 
         ?>
 
+        <?php if ($settings['design_layout'] == 'layout-2'): ?>
 
-        <div class="tp-testimonial-area">
-            <div class="container container-1324 p-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-9 col-lg-10 col-md-11 text-center">
-                        <div class="swiper-container tp-testimonal-slider-active">
-                            <div class="swiper-wrapper">
-                                <?php foreach ($settings['list'] as $item):
-                                    if (!empty($item['image'])) {
-                                        $image_url = !empty($item['image']['id']) ? wp_get_attachment_image_url($item['image']['id'], 'full') : $item['image']['url'];
-                                        $image_alt = !empty($item['image']['id']) ? get_post_meta($item['image']['id'], '_wp_attachment_image_alt', true) : '';
-                                    }
-                                    ?>
-                                    <div class="swiper-slide">
-                                        <div class="tp-testimonal">
-                                            <div class="tp-testimonal-star mb-5">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <?php if (!empty($item['subject'])): ?>
+            <?php
+            if (!empty($settings['image'])):
+                $image_url = !empty($settings['image']['id']) ? wp_get_attachment_image_url($settings['image']['id'], 'full') : $settings['image']['url'];
+                $image_alt = !empty($settings['image']['id']) ? get_post_meta($settings['image']['id'], '_wp_attachment_image_alt', true) : '';
+            endif;
+
+            if (!empty($settings['image_02'])):
+                $image_02_url = !empty($settings['image_02']['id']) ? wp_get_attachment_image_url($settings['image_02']['id'], 'full') : $settings['image_02']['url'];
+                $image_02_alt = !empty($settings['image_02']['id']) ? get_post_meta($settings['image_02']['id'], '_wp_attachment_image_alt', true) : '';
+            endif;
+                ?>
+
+            <div class="tp-testimonial-area tp-testimonal-3-style fix p-relative">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <div class="tp-about-2-thumb">
+                                <?php if(!empty($image_url)): ?>
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="col-xl-9">
+                            <div class="tp-about-2-content-wrap ml-30 pt-195 pb-195 tp-bg-mulberry p-relative">
+                                 <?php if(!empty($image_02_url)): ?>
+                                    <img class="tp-about-2-map" src="<?php echo esc_url($image_02_url); ?>" alt="<?php echo esc_attr($image_02_alt); ?>">
+                                <?php endif; ?>
+                                <div class="row">
+                                    <div class="offset-xxl-4 col-xxl-6 offset-xl-4 col-xl-7">
+                                        <div class="tp-about-2-content-inner mr-50">
+                                            <div class="tp-about-2-info mb-60">
+                                                <?php if (!empty($settings['sub_title'])): ?>
                                                 <span
-                                                    class="tp-testimonal-label mb-20 d-inline-block"><?php echo esc_html($item['subject']); ?></span>
-                                            <?php endif; ?>
+                                                    class="tp-section-subtitle tp-section-subtitle-yellow d-inline-block mb-15 wow fadeInUp"
+                                                    data-wow-duration=".9s" data-wow-delay=".3s"><?php echo esc_html($settings['sub_title']) ?></span>
+                                                <?php endif; ?>
 
-                                            <?php if (!empty($item['review_text'])): ?>
-                                                <h4 class="tp-testimonal-dec"><?php echo kd_kses($item['review_text']); ?></h4>
-                                            <?php endif; ?>
+                                                <?php if (!empty($settings['title'])): ?>
+                                                <h2 class="tp-section-title tp-section-title-white mb-30 wow fadeInUp"
+                                                    data-wow-duration=".9s" data-wow-delay=".4s"><?php echo kd_kses($settings['title']) ?></h2>
+                                                <?php endif; ?>
 
-                                            <div class="tp-testimonal-user mt-40">
-                                                <div class="tp-testimonal-img">
-                                                    <?php if (!empty($image_url)): ?>
-                                                        <img src="<?php echo esc_url($image_url); ?>"
-                                                            alt="<?php echo esc_attr($image_alt); ?>">
-                                                    <?php endif; ?>
+                                                <?php if (!empty($settings['description'])): ?>
+                                                    <p class="wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".5s">
+                                                        <?php echo kd_kses($settings['description']); ?>
+                                                    </p>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="tp-testimonal-3-wrap">
+                                                <div class="swiper-container tp-testimonal-3-slider-active">
+                                                    <div class="swiper-wrapper">
+                                                        <?php foreach ($settings['list'] as $item):
+                                                            if (!empty($item['image'])) {
+                                                                $image_url = !empty($item['image']['id']) ? wp_get_attachment_image_url($item['image']['id'], 'full') : $item['image']['url'];
+                                                                $image_alt = !empty($item['image']['id']) ? get_post_meta($item['image']['id'], '_wp_attachment_image_alt', true) : '';
+                                                            }
+                                                            ?>
+                                                            <div class="swiper-slide">
+                                                                <div class="tp-testimonal">
+                                                                    <div class="tp-testimonal-star mb-20">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                    </div>
+                                                                    <?php if (!empty($item['review_text'])): ?>
+                                                                        <h4 class="tp-testimonal-dec" data-color="#fcf8ec">
+                                                                            <?php echo kd_kses($item['review_text']); ?></h4>
+                                                                    <?php endif; ?>
+                                                                    <div class="tp-testimonal-user mt-50">
+                                                                        <div class="tp-testimonal-img">
+                                                                            <?php if (!empty($image_url)): ?>
+                                                                                <img src="<?php echo esc_url($image_url); ?>"
+                                                                                    alt="<?php echo esc_attr($image_alt); ?>">
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                        <div class="tp-testimonal-bio">
+                                                                            <?php if (!empty($item['name'])): ?>
+                                                                            <h4 class="tp-testimonal-name"><?php echo esc_html($item['name']); ?></h4>
+                                                                            <?php endif; ?>
+
+                                                                            <?php if (!empty($item['designation'])): ?>
+                                                                                <span><?php echo esc_html($item['designation']); ?></span>
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
                                                 </div>
-                                                <div class="tp-testimonal-bio">
-                                                    <?php if (!empty($item['name'])): ?>
-                                                        <h4 class="tp-testimonal-name"><?php echo esc_html($item['name']); ?></h4>
-                                                    <?php endif; ?>
-
-                                                    <?php if (!empty($item['designation'])): ?>
-                                                        <span><?php echo esc_html($item['designation']); ?></span>
-                                                    <?php endif; ?>
-                                                </div>
+                                                <div class="tp-testimonal-3-pagination mt-70"></div>
                                             </div>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tp-testimonial-arrow text-start text-md-end">
-                    <button class="tp-test-arrow-prev tp-test-arrow">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 7H1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                    <button class="tp-test-arrow-next tp-test-arrow">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.00049 7H13.0005" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M7.00049 1L13.0005 7L7.00049 13" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
+            </div>
+
+        <?php else: ?>
+            <div class="tp-testimonial-area">
+                <div class="container container-1324 p-relative">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-9 col-lg-10 col-md-11 text-center">
+                            <div class="swiper-container tp-testimonal-slider-active">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($settings['list'] as $item):
+                                        if (!empty($item['image'])) {
+                                            $image_url = !empty($item['image']['id']) ? wp_get_attachment_image_url($item['image']['id'], 'full') : $item['image']['url'];
+                                            $image_alt = !empty($item['image']['id']) ? get_post_meta($item['image']['id'], '_wp_attachment_image_alt', true) : '';
+                                        }
+                                        ?>
+                                        <div class="swiper-slide">
+                                            <div class="tp-testimonal">
+                                                <div class="tp-testimonal-star mb-5">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <?php if (!empty($item['subject'])): ?>
+                                                    <span
+                                                        class="tp-testimonal-label mb-20 d-inline-block"><?php echo esc_html($item['subject']); ?></span>
+                                                <?php endif; ?>
+
+                                                <?php if (!empty($item['review_text'])): ?>
+                                                    <h4 class="tp-testimonal-dec"><?php echo kd_kses($item['review_text']); ?></h4>
+                                                <?php endif; ?>
+
+                                                <div class="tp-testimonal-user mt-40">
+                                                    <div class="tp-testimonal-img">
+                                                        <?php if (!empty($image_url)): ?>
+                                                            <img src="<?php echo esc_url($image_url); ?>"
+                                                                alt="<?php echo esc_attr($image_alt); ?>">
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <div class="tp-testimonal-bio">
+                                                        <?php if (!empty($item['name'])): ?>
+                                                            <h4 class="tp-testimonal-name"><?php echo esc_html($item['name']); ?></h4>
+                                                        <?php endif; ?>
+
+                                                        <?php if (!empty($item['designation'])): ?>
+                                                            <span><?php echo esc_html($item['designation']); ?></span>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tp-testimonial-arrow text-start text-md-end">
+                        <button class="tp-test-arrow-prev tp-test-arrow">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 7H1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="tp-test-arrow-next tp-test-arrow">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.00049 7H13.0005" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M7.00049 1L13.0005 7L7.00049 13" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <?php
+        <?php endif; ?>
+    <?php
     }
 }
 $widgets_manager->register(new \kindAid_Testkmonial());

@@ -601,7 +601,8 @@ class kindAid_Charity_Slider extends \Elementor\Widget_Base {
                                             $goal_amount = charitable_format_money($campaign->get_goal());
                                             $donated_amount = charitable_format_money($campaign->get_donated_amount());
                                             $button_text = $campaign->get('donate_button_text', true);
-                                            $percentage = $campaign->get_percent_donated_raw() . '%';
+                                            $percentage_raw = $campaign->get_percent_donated_raw();
+                                            $percentage = round($percentage_raw) . '%';
                                             ?>
 
                                             <div class="swiper-slide">
@@ -742,7 +743,7 @@ class kindAid_Charity_Slider extends \Elementor\Widget_Base {
                                             $donated_amount = charitable_format_money($campaign->get_donated_amount());
                                             $button_text = $campaign->get('donate_button_text', true);
                                             $percentage = $campaign->get_percent_donated_raw();
-                                            $percentage = $percentage . '%';
+                                            $percentage = round($percentage) . '%';
                                             ?>
                                             <div class="swiper-slide">
                                                 <div class="tp-causes-wrap mb-30">
@@ -901,7 +902,7 @@ class kindAid_Charity_Slider extends \Elementor\Widget_Base {
                                             $donated_amount = charitable_format_money($campaign->get_donated_amount());
                                             $button_text = $campaign->get('donate_button_text', true);
                                             $percentage = $campaign->get_percent_donated_raw();
-                                            $percentage = $percentage . '%';
+                                            $percentage = round($percentage) . '%';
                                             ?>
                                             <div class="swiper-slide">
                                                 <div class="tp-causes-wrap">
