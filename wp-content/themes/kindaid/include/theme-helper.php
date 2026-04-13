@@ -301,3 +301,15 @@ function kindaid_blog_share() {
     </div>
     <?php
 }
+
+
+function kindaid_product_widget_review_start($widget_review_start){
+    $widget_review_start = '<div class="tp-shop-widget-product">';
+    return $widget_review_start;
+}
+add_filter('woocommerce_before_widget_product_review_list','kindaid_product_widget_review_start');
+function kindaid_product_widget_end($widget_review_end){
+    $widget_review_end = '</div>';
+    return $widget_review_end;
+}
+add_filter('woocommerce_after_widget_product_review_list','kindaid_product_widget_end');

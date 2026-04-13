@@ -15,14 +15,27 @@
  * @version 7.0.1
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
 ?>
-<form role="search" method="get" class="woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'woocommerce' ); ?></label>
-	<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="search-field" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'woocommerce' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
-	<button type="submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 'woocommerce' ); ?>" class="<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ); ?>"><?php echo esc_html_x( 'Search', 'submit button', 'woocommerce' ); ?></button>
-	<input type="hidden" name="post_type" value="product" />
+
+<div class="tp-shop-widget-search">
+	<form method="get" action="<?php echo esc_url(home_url('/')); ?>">
+		<div class="tp-shop-widget-search-input">
+		<input name="s" type="search" placeholder="<?php echo esc_attr__('Search products&hellip;', 'woocommerce'); ?>"
+			value="<?php echo get_search_query(); ?>" />
+		<button type="submit">
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M7.64993 14.2999C11.3226 14.2999 14.2999 11.3226 14.2999 7.64993C14.2999 3.97727 11.3226 1 7.64993 1C3.97727 1 1 3.97727 1 7.64993C1 11.3226 3.97727 14.2999 7.64993 14.2999Z"
+					stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M15.0001 15L13.6001 13.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+					stroke-linejoin="round" />
+			</svg>
+		</button>
+		<input type="hidden" name="post_type" value="product" />
+	</div>
 </form>
+</div>

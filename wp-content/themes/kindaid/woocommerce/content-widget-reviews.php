@@ -15,33 +15,37 @@
  * @version 3.4.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
+$comment = get_comment();
+$product_id = $comment->comment_post_ID;
+$product = wc_get_product($product_id);
+$average_rating = $product->get_average_rating();
 ?>
-<li>
-	<?php do_action( 'woocommerce_widget_product_review_item_start', $args ); ?>
+<div class="tp-shop-widget-product-item d-flex align-items-center">
+	<?php do_action('woocommerce_widget_product_review_item_start', $args); ?>
 
-	<?php
-	// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-	?>
+	<div class="tp-shop-widget-product-thumb">
+		<a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>">
+			<?php echo $product->get_image(); ?>
+		</a>
+	</div>
+	<div class="tp-shop-widget-product-content">
+		<div class="tp-shop-widget-product-rating-wrapper d-flex align-items-center">
+			<div class="tp-shop-widget-product-rating">
+				<?php echo wc_get_rating_html(intval(get_comment_meta($comment->comment_ID, 'rating', true))); ?>
+			</div>
+			<div class="tp-shop-widget-product-rating-number">
+				<span>(<?php echo esc_html($average_rating); ?>)</span>
+			</div>
+		</div>
+		<h4 class="tp-shop-widget-product-title">
+			<a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>"><?php echo wp_kses_post($product->get_name()); ?></a>
+		</h4>
+		<div class="tp-shop-widget-product-price-wrapper">
+			<span class="tp-shop-widget-product-price"><?php echo wc_price($product->get_price()); ?></span>
+		</div>
+	</div>
 
-	<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-		<?php echo $product->get_image(); ?>
-		<span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
-	</a>
-
-	<?php echo wc_get_rating_html( intval( get_comment_meta( $comment->comment_ID, 'rating', true ) ) ); ?>
-
-	<span class="reviewer">
-	<?php
-	/* translators: %s: Comment author. */
-	echo sprintf( esc_html__( 'by %s', 'woocommerce' ), get_comment_author( $comment->comment_ID ) );
-	?>
-	</span>
-
-	<?php
-	// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
-	?>
-
-	<?php do_action( 'woocommerce_widget_product_review_item_end', $args ); ?>
-</li>
+	<?php do_action('woocommerce_widget_product_review_item_end', $args); ?>
+</div>

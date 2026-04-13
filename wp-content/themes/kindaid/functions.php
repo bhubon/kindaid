@@ -110,6 +110,16 @@ function kindaid_widgets() {
         'before_title' => '<h3 class="tp-widget-main-title mb-25">',
         'after_title' => '</h3>',
     ));
+    // Product Sidebar
+    register_sidebar(array(
+        'name' => __('Shop Sidebar', 'kindaid'),
+        'id' => 'product_sidebar',
+        'description' => __('Widgets in this area will be shown on Shop Sidebar.', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-shop-widget mb-50 %2$s" >',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-shop-widget-title no-border">',
+        'after_title' => '</h3>',
+    ));
     // Footer Style 01
     register_sidebar(array(
         'name' => __('Footer 1 :  Widgets : 1', 'kindaid'),

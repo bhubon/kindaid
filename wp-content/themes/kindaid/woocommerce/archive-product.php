@@ -63,6 +63,7 @@ if (woocommerce_product_loop()) {
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="tp-shop-sidebar mr-30">
+					<?php dynamic_sidebar('product_sidebar'); ?>
 					<!-- search -->
 					<div class="tp-shop-widget-search pb-50">
 						<form action="#">
@@ -432,7 +433,7 @@ if (woocommerce_product_loop()) {
 					 * @hooked woocommerce_pagination - 10
 					 */
 					do_action('woocommerce_after_shop_loop');
-					
+
 					} else {
 						/**
 						 * Hook: woocommerce_no_products_found.
@@ -443,28 +444,7 @@ if (woocommerce_product_loop()) {
 					}
 					?>
 			</div>
-			<div class="tp-pagination text-center mt-20">
-				<ul>
-					<li>
-						<a href="#"><i class="far fa-arrow-left"></i></a>
-					</li>
-					<li>
-						<a href="#"><span>01</span></a>
-					</li>
-					<li class="current">
-						<a href="#"><span>02</span></a>
-					</li>
-					<li>
-						<a href="#"><span>03</span></a>
-					</li>
-					<li>
-						<a href="#"><span>04</span></a>
-					</li>
-					<li>
-						<a href="#"><i class="far fa-arrow-right"></i></a>
-					</li>
-				</ul>
-			</div>
+			
 		</div>
 	</div>
 </div>
