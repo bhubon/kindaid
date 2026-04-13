@@ -88,7 +88,7 @@
                 }
                 &-action{
                     & a,
-                     & button,
+                     & .tp-product-action-btn,
                      & .product-action-btn{
                         transform: translateX(0);
                         visibility: visible;
