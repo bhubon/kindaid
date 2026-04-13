@@ -374,3 +374,33 @@ div.tp-join-shape img {
 .woosc-area {
     background: transparent !important;
 }
+
+.woocommerce .tp-shop-widget-filter .ui-slider .ui-slider-handle {
+    top: -7px;
+    width: 5px;
+    height: 17px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    background-color: var(--tp-theme-primary);
+    cursor: pointer;
+}
+
+.woocommerce .tp-shop-widget-filter .ui-slider-horizontal .ui-slider-range {
+    background-color: var(--tp-theme-primary);
+}
+
+.woocommerce .widget_price_filter .price_slider_amount .button {
+    float: left;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--tp-common-mulberry);
+    background-color: var(--tp-common-emerald) !important;
+    padding: 10px 21px;
+}
+.woocommerce .tp-shop-widget-filter .ui-widget.ui-widget-content {
+    height: 3px;
+    background-color: var(--tp-common-emerald);
+    border: 0;
+}

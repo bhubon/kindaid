@@ -8272,6 +8272,79 @@ p.tp-donation-notice span {
   -o-transition: 0.4s 0.3s 0s ease-out;
   transition: 0.4s 0.3s 0s ease-out;
 }
+.tp-shop-widget .product-categories {
+  overflow-y: scroll;
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
+  padding-right: 10px;
+}
+.tp-shop-widget .product-categories li {
+  list-style: none;
+  width: 100%;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.tp-shop-widget .product-categories li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.tp-shop-widget .product-categories li span {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  border: 1px solid rgba(98, 0, 53, 0.1);
+  border-radius: 8px;
+  padding: 5px 6px 3px;
+  -webkit-transition: 0.4s 0.3s 0s ease-out;
+  -moz-transition: 0.4s 0.3s 0s ease-out;
+  -ms-transition: 0.4s 0.3s 0s ease-out;
+  -o-transition: 0.4s 0.3s 0s ease-out;
+  transition: 0.4s 0.3s 0s ease-out;
+}
+.tp-shop-widget .product-categories li:hover span {
+  background-color: var(--tp-theme-primary);
+  border-color: var(--tp-theme-primary);
+  color: var(--tp-common-white);
+}
+.tp-shop-widget .product-categories li a {
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--tp-grey-1);
+  position: relative;
+  padding-left: 16px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.tp-shop-widget .product-categories li a::after {
+  position: absolute;
+  content: "";
+  top: 10px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  text-align: center;
+  background-color: var(--tp-common-emerald);
+  border-radius: 50%;
+  -webkit-transition: 0.4s 0.3s 0s ease-out;
+  -moz-transition: 0.4s 0.3s 0s ease-out;
+  -ms-transition: 0.4s 0.3s 0s ease-out;
+  -o-transition: 0.4s 0.3s 0s ease-out;
+  transition: 0.4s 0.3s 0s ease-out;
+}
+.tp-shop-widget .product-categories li a:hover {
+  color: var(--tp-theme-primary);
+}
+.tp-shop-widget .product-categories li a:hover::after {
+  background-color: var(--tp-theme-primary);
+}
 .tp-shop-widget-filter .ui-widget.ui-widget-content {
   height: 3px;
   background-color: var(--tp-common-emerald);
