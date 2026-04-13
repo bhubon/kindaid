@@ -1,0 +1,5 @@
+[13-Apr-2026 09:18:07 UTC] PHP Warning:  exif_read_data(single-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[13-Apr-2026 09:18:15 UTC] PHP Warning:  exif_read_data(hoodie-green-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[13-Apr-2026 09:18:16 UTC] PHP Warning:  exif_read_data(hoodie-blue-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[13-Apr-2026 09:18:18 UTC] PHP Warning:  exif_read_data(vnech-tee-blue-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[13-Apr-2026 09:18:18 UTC] PHP Warning:  exif_read_data(vnech-tee-green-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946

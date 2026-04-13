@@ -38,6 +38,8 @@ if (!function_exists('kindaid_setup')):
         add_theme_support('post-thumbnails');
         set_post_thumbnail_size(825, 510, true);
 
+        add_theme_support('woocommerce');
+
         // This theme uses wp_nav_menu() in two locations.
         register_nav_menus(array(
             'main-menu' => __('Main Menu', 'kindaid'),
@@ -241,6 +243,10 @@ function kindaid_fonts_url() {
 include_once get_template_directory() . '/include/theme-helper.php';
 include_once get_template_directory() . '/include/nav-walker.php';
 include_once get_template_directory() . '/include/breadcrumb.php';
+
+if (class_exists('WooCommerce')) {
+include_once get_template_directory() . '/include/kindaid-woocommerce.php';
+}
 
 if (function_exists('tpmeta_field')) {
     include_once get_template_directory() . '/include/kindaid-metafields.php';
