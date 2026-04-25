@@ -399,8 +399,35 @@ div.tp-join-shape img {
     background-color: var(--tp-common-emerald) !important;
     padding: 10px 21px;
 }
+
 .woocommerce .tp-shop-widget-filter .ui-widget.ui-widget-content {
     height: 3px;
     background-color: var(--tp-common-emerald);
     border: 0;
+}
+
+/* Product Details Page */
+.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images {
+    float: none;
+    width: auto;
+}
+
+.woocommerce div.product div.images .flex-control-thumbs li {
+    width: 20%;
+    padding: 0 4px;
+}
+.woocommerce div.product .woocommerce-product-gallery--columns-4 .flex-control-thumbs li:nth-child(4n+1) {
+    clear: inherit;
+}
+.woocommerce div.product div.images .flex-control-thumbs {
+    display: flex;
+    grid-gap: 10px;
+    margin: 14px -4px 0;
+}
+.tp-product-details-price ins {
+    text-decoration: none;
+}
+.tp-product-details-price del {
+    color: var(--tp-grey-1);
+    margin-right: 5px;
 }

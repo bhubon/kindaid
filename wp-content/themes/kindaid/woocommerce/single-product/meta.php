@@ -17,26 +17,52 @@
 
 use Automattic\WooCommerce\Enums\ProductType;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
 global $product;
+
+$product_id = get_the_ID();
+$product_cat = get_the_terms($product_id, 'product_cat');
+$product_tag = get_the_terms($product_id, 'product_tag');
 ?>
-<div class="product_meta">
 
-	<?php do_action( 'woocommerce_product_meta_start' ); ?>
+<div class="tp-product-details-query mb-40">
+	<?php do_action('woocommerce_product_meta_start'); ?>
 
-	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( ProductType::VARIABLE ) ) ) : ?>
+	<?php if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type(ProductType::VARIABLE))): ?>
+		<div class="tp-product-details-query-item d-flex align-items-center">
+			<span><?php esc_html_e('SKU:', 'kindaid'); ?> </span>
+			<p><?php echo ($sku = $product->get_sku()) ? $sku : esc_html__('N/A', 'woocommerce'); ?></p>
+		</div>
+	<?php endif; ?>
+	
+	<?php if (!empty($product_cat) && !is_wp_error($product_cat)): ?>
+		<div class="tp-product-details-query-item d-flex align-items-center">
+			<span><?php echo esc_html__('Category: ', 'kindaid'); ?></span>
 
-		<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
-
+			<?php
+			$html = '';
+			foreach ($product_cat as $cat) {
+				$html .= '<p">' . esc_html($cat->name) . '</p>, ';
+			}
+			echo rtrim($html, ', ');
+			?>
+		</div>
 	<?php endif; ?>
 
-	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-
-	<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
-
-	<?php do_action( 'woocommerce_product_meta_end' ); ?>
-
+	<?php if (!empty($product_tag) && !is_wp_error($product_tag)): ?>
+		<div class="tp-product-details-query-item d-flex align-items-center">
+			<span><?php echo esc_html__('Tag: ', 'kindaid'); ?></span>
+			<?php
+			$html = '';
+			foreach ($product_tag as $tag) {
+				$html .= '<p">' . esc_html($tag->name) . '</p>, ';
+			}
+			echo rtrim($html, ', ');
+			?>
+		</div>
+	<?php endif; ?>
+	<?php do_action('woocommerce_product_meta_end'); ?>
 </div>

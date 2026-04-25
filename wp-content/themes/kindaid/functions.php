@@ -39,6 +39,8 @@ if (!function_exists('kindaid_setup')):
         set_post_thumbnail_size(825, 510, true);
 
         add_theme_support('woocommerce');
+        add_theme_support('wc-product-gallery-lightbox');
+        add_theme_support('wc-product-gallery-slider');
 
         // This theme uses wp_nav_menu() in two locations.
         register_nav_menus(array(

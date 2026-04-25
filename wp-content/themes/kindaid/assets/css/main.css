@@ -7847,16 +7847,16 @@ p.tp-donation-notice span {
 .tp-product-details-add-to-cart-btn:hover {
   background: var(--tp-common-mulberry);
 }
-.tp-product-details-wishlist-btn {
+.tp-product-details-wishlist-btn button {
   display: inline-block;
   width: 46px;
   height: 46px;
-  line-height: 46px;
+  line-height: 50px;
   text-align: center;
   background-color: var(--tp-common-emerald);
   color: var(--tp-common-mulberry);
 }
-.tp-product-details-wishlist-btn:hover {
+.tp-product-details-wishlist-btn button:hover {
   background-color: var(--tp-common-mulberry);
   color: var(--tp-common-white);
 }

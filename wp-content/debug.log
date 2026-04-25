@@ -9,3 +9,61 @@
 [13-Apr-2026 13:27:50 UTC] PHP Notice:  Function _load_textdomain_just_in_time was called <strong>incorrectly</strong>. Translation loading for the <code>kindaid</code> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <code>init</code> action or later. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 6.7.0.) in C:\laragon\www\kindaid\wp-includes\functions.php on line 6131
 [13-Apr-2026 13:27:50 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\laragon\www\kindaid\wp-includes\class-wp-recovery-mode-email-service.php on line 367
 [13-Apr-2026 13:27:50 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\laragon\www\kindaid\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[14-Apr-2026 08:37:23 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it in C:\laragon\www\kindaid\wp-includes\class-wpdb.php on line 1994
+[14-Apr-2026 09:02:11 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "kindaid" not found or invalid function name in C:\laragon\www\kindaid\wp-includes\class-wp-hook.php:341
+Stack trace:
+#0 C:\laragon\www\kindaid\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 C:\laragon\www\kindaid\wp-content\plugins\woocommerce\includes\wc-core-functions.php(851): apply_filters('woocommerce_get...', Array)
+#2 C:\laragon\www\kindaid\wp-content\plugins\woocommerce\includes\class-woocommerce.php(1032): wc_get_image_size('gallery_thumbna...')
+#3 C:\laragon\www\kindaid\wp-includes\class-wp-hook.php(341): WooCommerce->add_image_sizes('')
+#4 C:\laragon\www\kindaid\wp-includes\class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#5 C:\laragon\www\kindaid\wp-includes\plugin.php(522): WP_Hook->do_action(Array)
+#6 C:\laragon\www\kindaid\wp-settings.php(742): do_action('init')
+#7 C:\laragon\www\kindaid\wp-config.php(105): require_once('C:\\laragon\\www\\...')
+#8 C:\laragon\www\kindaid\wp-load.php(50): require_once('C:\\laragon\\www\\...')
+#9 C:\laragon\www\kindaid\wp-admin\admin-ajax.php(22): require_once('C:\\laragon\\www\\...')
+#10 {main}
+  thrown in C:\laragon\www\kindaid\wp-includes\class-wp-hook.php on line 341
+[14-Apr-2026 09:02:12 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "kindaid" not found or invalid function name in C:\laragon\www\kindaid\wp-includes\class-wp-hook.php:341
+Stack trace:
+#0 C:\laragon\www\kindaid\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 C:\laragon\www\kindaid\wp-content\plugins\woocommerce\includes\wc-core-functions.php(851): apply_filters('woocommerce_get...', Array)
+#2 C:\laragon\www\kindaid\wp-content\plugins\woocommerce\includes\class-woocommerce.php(1032): wc_get_image_size('gallery_thumbna...')
+#3 C:\laragon\www\kindaid\wp-includes\class-wp-hook.php(341): WooCommerce->add_image_sizes('')
+#4 C:\laragon\www\kindaid\wp-includes\class-wp-hook.php(365): WP_Hook->apply_filters(NULL, Array)
+#5 C:\laragon\www\kindaid\wp-includes\plugin.php(522): WP_Hook->do_action(Array)
+#6 C:\laragon\www\kindaid\wp-settings.php(742): do_action('init')
+#7 C:\laragon\www\kindaid\wp-config.php(105): require_once('C:\\laragon\\www\\...')
+#8 C:\laragon\www\kindaid\wp-load.php(50): require_once('C:\\laragon\\www\\...')
+#9 C:\laragon\www\kindaid\wp-cron.php(46): require_once('C:\\laragon\\www\\...')
+#10 {main}
+  thrown in C:\laragon\www\kindaid\wp-includes\class-wp-hook.php on line 341
+[14-Apr-2026 09:06:13 UTC] PHP Parse error:  syntax error, unexpected end of file in C:\laragon\www\kindaid\wp-content\themes\kindaid\include\kindaid-woocommerce.php on line 209
+[14-Apr-2026 09:06:13 UTC] PHP Notice:  Function _load_textdomain_just_in_time was called <strong>incorrectly</strong>. Translation loading for the <code>woocommerce</code> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <code>init</code> action or later. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 6.7.0.) in C:\laragon\www\kindaid\wp-includes\functions.php on line 6131
+[14-Apr-2026 09:16:50 UTC] PHP Parse error:  syntax error, unexpected token ")" in C:\laragon\www\kindaid\wp-content\themes\kindaid\include\kindaid-woocommerce.php on line 216
+[14-Apr-2026 09:16:50 UTC] PHP Notice:  Function _load_textdomain_just_in_time was called <strong>incorrectly</strong>. Translation loading for the <code>woocommerce</code> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <code>init</code> action or later. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 6.7.0.) in C:\laragon\www\kindaid\wp-includes\functions.php on line 6131
+[14-Apr-2026 09:18:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_error() in C:\laragon\www\kindaid\wp-content\themes\kindaid\include\kindaid-woocommerce.php:216
+Stack trace:
+#0 C:\laragon\www\kindaid\wp-includes\class-wp-hook.php(341): kindaid_product_details('')
+#1 C:\laragon\www\kindaid\wp-includes\class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#2 C:\laragon\www\kindaid\wp-includes\plugin.php(522): WP_Hook->do_action(Array)
+#3 C:\laragon\www\kindaid\wp-content\themes\kindaid\woocommerce\content-single-product.php(64): do_action('woocommerce_sin...')
+#4 C:\laragon\www\kindaid\wp-includes\template.php(816): require('C:\\laragon\\www\\...')
+#5 C:\laragon\www\kindaid\wp-content\plugins\woocommerce\includes\wc-core-functions.php(288): load_template('C:\\laragon\\www\\...', false)
+#6 C:\laragon\www\kindaid\wp-content\themes\kindaid\woocommerce\single-product.php(37): wc_get_template_part('content', 'single-product')
+#7 C:\laragon\www\kindaid\wp-includes\template-loader.php(132): include('C:\\laragon\\www\\...')
+#8 C:\laragon\www\kindaid\wp-blog-header.php(19): require_once('C:\\laragon\\www\\...')
+#9 C:\laragon\www\kindaid\index.php(17): require('C:\\laragon\\www\\...')
+#10 {main}
+  thrown in C:\laragon\www\kindaid\wp-content\themes\kindaid\include\kindaid-woocommerce.php on line 216
+[14-Apr-2026 09:21:30 UTC] PHP Parse error:  syntax error, unexpected token "endforeach" in C:\laragon\www\kindaid\wp-content\themes\kindaid\include\kindaid-woocommerce.php on line 220
+[14-Apr-2026 09:21:30 UTC] PHP Notice:  Function _load_textdomain_just_in_time was called <strong>incorrectly</strong>. Translation loading for the <code>woocommerce</code> domain was triggered too early. This is usually an indicator for some code in the plugin or theme running too early. Translations should be loaded at the <code>init</code> action or later. Please see <a href="https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 6.7.0.) in C:\laragon\www\kindaid\wp-includes\functions.php on line 6131
+[14-Apr-2026 10:45:05 UTC] Automatic updates starting...
+[14-Apr-2026 10:45:05 UTC]   Automatic plugin updates starting...
+[14-Apr-2026 10:45:05 UTC]   Automatic plugin updates complete.
+[14-Apr-2026 10:45:05 UTC] Automatic updates complete.
+[25-Apr-2026 10:29:02 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it in C:\laragon\www\kindaid\wp-includes\class-wpdb.php on line 1994
+[25-Apr-2026 10:48:52 UTC] Automatic updates starting...
+[25-Apr-2026 10:48:52 UTC]   Automatic plugin updates starting...
+[25-Apr-2026 10:48:52 UTC]   Automatic plugin updates complete.
+[25-Apr-2026 10:48:52 UTC] Automatic updates complete.
