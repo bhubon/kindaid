@@ -209,6 +209,9 @@ function kindaid_product_details() {
     global $product;
     $product_id = get_the_ID();
     $product_cat = get_the_terms($product_id, 'product_cat');
+    $social_switch = get_theme_mod('product_social_switch',false);
+    $payment_text = get_theme_mod('payment_text',__('Guaranteed safe & secure checkout','kindaid'));
+    $payment_image = get_theme_mod('payment_image',get_template_directory_uri().'/assets/img/product/cart/payment-option.png');
     ?>
     <div class="tp-product-details-wrapper pb-30 mt-15">
         <div class="tp-product-details-category mb-10">
@@ -243,32 +246,38 @@ function kindaid_product_details() {
             <?php woocommerce_template_single_add_to_cart(); ?>
         </div>
         <?php woocommerce_template_single_meta(); ?>
-        <div class="tp-product-details-social mb-50">
-            <div class="tp-footer-social">
-                <?php
-                $product_url = get_permalink();
-                $product_title = get_the_title();
-                ?>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($product_url); ?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M1.62839 7.77713C0.911363 7.77713 0.761719 7.91782 0.761719 8.59194V9.81416C0.761719 10.4883 0.911363 10.629 1.62839 10.629H3.36172V15.5179C3.36172 16.192 3.51136 16.3327 4.22839 16.3327H5.96172C6.67874 16.3327 6.82839 16.192 6.82839 15.5179V10.629H8.77466C9.31846 10.629 9.45859 10.5296 9.60798 10.038L9.97941 8.81579C10.2353 7.97368 10.0776 7.77713 9.14609 7.77713H6.82839V5.74009C6.82839 5.29008 7.21641 4.92527 7.69505 4.92527H10.1617C10.8787 4.92527 11.0284 4.78458 11.0284 4.11046V2.48083C11.0284 1.80671 10.8787 1.66602 10.1617 1.66602H7.69505C5.30182 1.66602 3.36172 3.49004 3.36172 5.74009V7.77713H1.62839Z"
-                            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode($product_url); ?>&text=<?php echo urlencode($product_title); ?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M5.28884 0.714844H0.666992L6.14691 7.9153L1.01754 13.9556H3.38746L7.26697 9.38713L10.7118 13.9136H15.3337L9.69453 6.50391L9.70451 6.51669L14.5599 0.798959H12.19L8.58427 5.04503L5.28884 0.714844ZM3.21817 1.97588H4.65702L12.7825 12.6525H11.3436L3.21817 1.97588Z"
-                            fill="currentColor" />
-                    </svg>
-                </a>
+
+        <?php if($social_switch): ?>
+            <div class="tp-product-details-social mb-50">
+                <div class="tp-footer-social">
+                    <?php
+                    $product_url = get_permalink();
+                    $product_title = get_the_title();
+                    ?>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($product_url); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1.62839 7.77713C0.911363 7.77713 0.761719 7.91782 0.761719 8.59194V9.81416C0.761719 10.4883 0.911363 10.629 1.62839 10.629H3.36172V15.5179C3.36172 16.192 3.51136 16.3327 4.22839 16.3327H5.96172C6.67874 16.3327 6.82839 16.192 6.82839 15.5179V10.629H8.77466C9.31846 10.629 9.45859 10.5296 9.60798 10.038L9.97941 8.81579C10.2353 7.97368 10.0776 7.77713 9.14609 7.77713H6.82839V5.74009C6.82839 5.29008 7.21641 4.92527 7.69505 4.92527H10.1617C10.8787 4.92527 11.0284 4.78458 11.0284 4.11046V2.48083C11.0284 1.80671 10.8787 1.66602 10.1617 1.66602H7.69505C5.30182 1.66602 3.36172 3.49004 3.36172 5.74009V7.77713H1.62839Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode($product_url); ?>&text=<?php echo urlencode($product_title); ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M5.28884 0.714844H0.666992L6.14691 7.9153L1.01754 13.9556H3.38746L7.26697 9.38713L10.7118 13.9136H15.3337L9.69453 6.50391L9.70451 6.51669L14.5599 0.798959H12.19L8.58427 5.04503L5.28884 0.714844ZM3.21817 1.97588H4.65702L12.7825 12.6525H11.3436L3.21817 1.97588Z"
+                                fill="currentColor" />
+                        </svg>
+                    </a>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
+
+        <?php if(!empty($payment_text)): ?>
         <div class="tp-product-details-payment d-flex align-items-center flex-wrap justify-content-between">
-            <p>Guaranteed safe <br> & secure checkout</p>
-            <img src="assets/img/product/cart/payment-option.png" alt="">
+            <p><?php echo kindaid_kses($payment_text); ?></p>
+            <img src="<?php echo esc_url($payment_image); ?>" alt="<?php echo esc_attr__(bloginfo(),'kindaid'); ?>">
         </div>
+        <?php endif; ?>
     </div>
     <?php
 }

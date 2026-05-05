@@ -15,16 +15,22 @@
  * @version 3.0.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 
-$heading = apply_filters( 'woocommerce_product_additional_information_heading', __( 'Additional information', 'woocommerce' ) );
+$heading = apply_filters('woocommerce_product_additional_information_heading', __('Additional information', 'woocommerce'));
 
 ?>
+<div class="tp-product-details-additional-info  tp-table-style-2 mb-30 pt-0">
+	<div class="row justify-content-center">
+		<div class="col-xl-10">
+			<?php if ($heading): ?>
+				<h3 class="tp-product-details-additional-info-title"><?php echo esc_html($heading); ?></h3>
+			<?php endif; ?>
 
-<?php if ( $heading ) : ?>
-	<h2><?php echo esc_html( $heading ); ?></h2>
-<?php endif; ?>
+			<?php do_action('woocommerce_product_additional_information', $product); ?>
 
-<?php do_action( 'woocommerce_product_additional_information', $product ); ?>
+		</div>
+	</div>
+</div>

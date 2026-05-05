@@ -441,3 +441,51 @@ function error_section_kirki() {
 	);
 }
 error_section_kirki();
+
+
+
+//Product Section
+function product_section_kirki() {
+	new \Kirki\Section(
+		'product_section',
+		[
+			'title' => esc_html__('Product', 'kindaid'),
+			'description' => esc_html__('Here Product settings will place.', 'kindaid'),
+			'panel' => 'kindaid_panel',
+			'priority' => 160,
+		]
+	);
+
+	new \Kirki\Field\Checkbox_Switch(
+		[
+			'settings' => 'product_social_switch',
+			'label' => esc_html__('Product Social Switch', 'kindaid'),
+			'description' => esc_html__('Product Social Switch', 'kindaid'),
+			'section' => 'product_section',
+			'default' => 'on',
+			'choices' => [
+				'on' => esc_html__('Enable', 'kindaid'),
+				'off' => esc_html__('Disable', 'kindaid'),
+			],
+		]
+	);
+
+	new \Kirki\Field\Text(
+		[
+			'settings' => 'payment_text',
+			'label' => esc_html__('Payment Text ', 'kindaid'),
+			'section' => 'product_section',
+			'default' => esc_html__('Guaranteed safe & secure checkout', 'kindaid'),
+		]
+	);
+
+	new \Kirki\Field\Image(
+		[
+			'settings' => 'payment_image',
+			'label' => esc_html__('Payment Image', 'kindaid'),
+			'description' => esc_html__('Payment image will be here', 'kindaid'),
+			'section' => 'product_section',
+		]
+	);
+}
+product_section_kirki();
