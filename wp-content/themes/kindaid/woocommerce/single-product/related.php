@@ -15,47 +15,50 @@
  * @version     10.3.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
-if ( $related_products ) :
+if ($related_products):
 	/**
 	 * Ensure all images of related products are lazy loaded by increasing the
 	 * current media count to WordPress's lazy loading threshold if needed.
 	 * Because wp_increase_content_media_count() is a private function, we
 	 * check for its existence before use.
 	 */
-	if ( function_exists( 'wp_increase_content_media_count' ) ) {
-		$content_media_count = wp_increase_content_media_count( 0 );
-		if ( $content_media_count < wp_omit_loading_attr_threshold() ) {
-			wp_increase_content_media_count( wp_omit_loading_attr_threshold() - $content_media_count );
+	if (function_exists('wp_increase_content_media_count')) {
+		$content_media_count = wp_increase_content_media_count(0);
+		if ($content_media_count < wp_omit_loading_attr_threshold()) {
+			wp_increase_content_media_count(wp_omit_loading_attr_threshold() - $content_media_count);
 		}
 	}
 	?>
 
-	<section class="related products">
+	<section class="related products pt-80">
 
 		<?php
-		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
+		$heading = apply_filters('woocommerce_product_related_products_heading', __('Related products', 'woocommerce'));
 
-		if ( $heading ) :
+		if ($heading):
 			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
+
+			<div class="tp-section-faq-title-wrap mb-45">
+				<h2 class="tp-section-title mb-25 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".4s"><?php echo esc_html($heading); ?></h2>
+			</div>
 		<?php endif; ?>
 		<?php woocommerce_product_loop_start(); ?>
 
-			<?php foreach ( $related_products as $related_product ) : ?>
+		<?php foreach ($related_products as $related_product): ?>
 
-					<?php
-					$post_object = get_post( $related_product->get_id() );
+			<?php
+			$post_object = get_post($related_product->get_id());
 
-					setup_postdata( $GLOBALS['post'] = $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+			setup_postdata($GLOBALS['post'] = $post_object); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
+	
+			wc_get_template_part('content', 'product');
+			?>
 
-					wc_get_template_part( 'content', 'product' );
-					?>
-
-			<?php endforeach; ?>
+		<?php endforeach; ?>
 
 		<?php woocommerce_product_loop_end(); ?>
 

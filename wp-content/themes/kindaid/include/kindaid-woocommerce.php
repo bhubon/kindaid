@@ -134,6 +134,17 @@ function kindaid_woocommerce_gallery_image_sizing($size) {
 }
 add_filter('woocommerce_get_image_size_gallery_thumbnail', 'kindaid_woocommerce_gallery_image_sizing');
 
+
+/**
+ * kindaid_woocommerce_review_gravatar_size
+ * @param mixed $size
+ * @return int
+ */
+function kindaid_woocommerce_review_gravatar_size($size) {
+    return 100;
+}
+add_filter('woocommerce_review_gravatar_size', 'kindaid_woocommerce_review_gravatar_size');
+
 /**
  * kindaid_product_grid
  * @return void
@@ -205,13 +216,17 @@ add_action('woocommerce_before_shop_loop_item', 'kindaid_product_grid');
 
 
 
+/**
+ * kindaid_product_details
+ * @return void
+ */
 function kindaid_product_details() {
     global $product;
     $product_id = get_the_ID();
     $product_cat = get_the_terms($product_id, 'product_cat');
-    $social_switch = get_theme_mod('product_social_switch',false);
-    $payment_text = get_theme_mod('payment_text',__('Guaranteed safe & secure checkout','kindaid'));
-    $payment_image = get_theme_mod('payment_image',get_template_directory_uri().'/assets/img/product/cart/payment-option.png');
+    $social_switch = get_theme_mod('product_social_switch', false);
+    $payment_text = get_theme_mod('payment_text', __('Guaranteed safe & secure checkout', 'kindaid'));
+    $payment_image = get_theme_mod('payment_image', get_template_directory_uri() . '/assets/img/product/cart/payment-option.png');
     ?>
     <div class="tp-product-details-wrapper pb-30 mt-15">
         <div class="tp-product-details-category mb-10">
@@ -247,7 +262,7 @@ function kindaid_product_details() {
         </div>
         <?php woocommerce_template_single_meta(); ?>
 
-        <?php if($social_switch): ?>
+        <?php if ($social_switch): ?>
             <div class="tp-product-details-social mb-50">
                 <div class="tp-footer-social">
                     <?php
@@ -261,7 +276,8 @@ function kindaid_product_details() {
                                 stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode($product_url); ?>&text=<?php echo urlencode($product_title); ?>">
+                    <a
+                        href="https://twitter.com/intent/tweet?url=<?php echo urlencode($product_url); ?>&text=<?php echo urlencode($product_title); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M5.28884 0.714844H0.666992L6.14691 7.9153L1.01754 13.9556H3.38746L7.26697 9.38713L10.7118 13.9136H15.3337L9.69453 6.50391L9.70451 6.51669L14.5599 0.798959H12.19L8.58427 5.04503L5.28884 0.714844ZM3.21817 1.97588H4.65702L12.7825 12.6525H11.3436L3.21817 1.97588Z"
@@ -272,11 +288,11 @@ function kindaid_product_details() {
             </div>
         <?php endif; ?>
 
-        <?php if(!empty($payment_text)): ?>
-        <div class="tp-product-details-payment d-flex align-items-center flex-wrap justify-content-between">
-            <p><?php echo kindaid_kses($payment_text); ?></p>
-            <img src="<?php echo esc_url($payment_image); ?>" alt="<?php echo esc_attr__(bloginfo(),'kindaid'); ?>">
-        </div>
+        <?php if (!empty($payment_text)): ?>
+            <div class="tp-product-details-payment d-flex align-items-center flex-wrap justify-content-between">
+                <p><?php echo kindaid_kses($payment_text); ?></p>
+                <img src="<?php echo esc_url($payment_image); ?>" alt="<?php echo esc_attr__(bloginfo(), 'kindaid'); ?>">
+            </div>
         <?php endif; ?>
     </div>
     <?php
