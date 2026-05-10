@@ -82,3 +82,13 @@ Stack trace:
 [10-May-2026 13:21:54 UTC]   Automatic plugin updates starting...
 [10-May-2026 13:21:54 UTC]   Automatic plugin updates complete.
 [10-May-2026 13:21:54 UTC] Automatic updates complete.
+[10-May-2026 14:36:36 UTC] PHP Warning:  exif_read_data(single-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:36:52 UTC] PHP Warning:  exif_read_data(hoodie-green-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:36:54 UTC] PHP Warning:  exif_read_data(hoodie-blue-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:36:57 UTC] PHP Warning:  exif_read_data(vnech-tee-blue-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:36:58 UTC] PHP Warning:  exif_read_data(vnech-tee-green-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:43:18 UTC] PHP Warning:  exif_read_data(vnech-tee-green-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:43:19 UTC] PHP Warning:  exif_read_data(vnech-tee-blue-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:43:22 UTC] PHP Warning:  exif_read_data(hoodie-blue-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:43:24 UTC] PHP Warning:  exif_read_data(hoodie-green-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946
+[10-May-2026 14:43:38 UTC] PHP Warning:  exif_read_data(single-1.jpg): Incorrect APP1 Exif Identifier Code in C:\laragon\www\kindaid\wp-admin\includes\image.php on line 946

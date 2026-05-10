@@ -36,7 +36,7 @@ if (!function_exists('kindaid_setup')):
          * See: https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
          */
         add_theme_support('post-thumbnails');
-        set_post_thumbnail_size(825, 510, true);
+        set_post_thumbnail_size(825, 510,false);
 
         add_theme_support('woocommerce');
         add_theme_support('wc-product-gallery-lightbox');
